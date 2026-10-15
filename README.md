@@ -103,3 +103,47 @@ Run the complete quality gate with:
 ```powershell
 python -m pytest -q
 ```
+
+## Reproducible security evaluation
+
+Phase 4 provides a CLI-only, deterministic comparison between ScopeSentry-R
+and a conventional provider-aware static OAuth scope checker. The static
+baseline permits an intent when each required scope is present or is covered
+by a catalogue-defined broader scope. It deliberately does not perform
+exposure analysis, least-privilege synthesis, runtime enforcement, scope-drift
+detection, composition-path analysis, or evidence generation.
+
+The immutable local corpus contains 24 hand-authored cases: 8 safe and 16
+unsafe. Ground truth is declared with each case before either system runs and
+is included in a stable canonical corpus hash. The corpus covers exact access,
+multiple intents, excessive and unknown authority, missing permissions,
+runtime drift, capability mismatch, contract blocking/quarantine, and safe and
+unsafe multi-grant composition. It is intentionally threat-heavy and is not a
+statistically representative sample of all OAuth deployments.
+
+Run the reproducible evaluation from the project root:
+
+```powershell
+python -m app.evaluation.runner --iterations 50 --warmups 5 --output-dir reports\evaluation
+```
+
+The command writes:
+
+- `reports/evaluation/scope_sentry_evaluation.json`
+- `reports/evaluation/scope_sentry_evaluation.csv`
+- `reports/evaluation/scope_sentry_evaluation.md`
+
+Positive means an unsafe case. A true positive requires effective containment,
+not merely risk detection; a false negative is unsafe authority that reaches
+execution. Reports include raw TP/TN/FP/FN counts, false-allow and false-block
+rates, safe-case allow and unsafe-case prevention rates, per-category results,
+scope-count exposure reduction, composition and drift results, and local
+median/p95/min/max timing observations. Every rate includes its numerator and
+denominator, and zero-denominator rates are reported as not applicable.
+
+Correctness evidence is written to a temporary isolated hash chain and verified
+before the run succeeds. The normal evidence file is hashed before and after
+evaluation (or confirmed to remain absent), while repeated timing iterations
+perform no evidence writes. Generated measurements use only the local mock
+catalogue, require no network or OAuth credentials, are not production
+performance guarantees, and are not a formal security or patentability proof.

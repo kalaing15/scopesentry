@@ -1,0 +1,5786 @@
+{
+  "aggregate_metrics": {
+    "baseline": {
+      "attack_category_coverage": {
+        "denominator": 11,
+        "numerator": 3,
+        "percentage": 27.27,
+        "ratio": 0.2727272727272727
+      },
+      "by_category": {
+        "exact_least_privilege": {
+          "true_negative": 6
+        },
+        "excessive_authority_without_misuse": {
+          "false_negative": 1
+        },
+        "excessive_read_authority": {
+          "false_negative": 1
+        },
+        "excessive_write_authority": {
+          "false_negative": 2
+        },
+        "manual_review": {
+          "true_positive": 1
+        },
+        "missing_permission": {
+          "true_positive": 2
+        },
+        "missing_runtime_scope": {
+          "false_negative": 1
+        },
+        "multiple_legitimate_intents": {
+          "true_negative": 1
+        },
+        "multiple_missing_permissions": {
+          "true_positive": 1
+        },
+        "runtime_capability_mismatch": {
+          "false_negative": 2
+        },
+        "runtime_scope_drift": {
+          "false_negative": 2
+        },
+        "safe_multi_grant_composition": {
+          "true_negative": 1
+        },
+        "unauthorized_composition": {
+          "false_negative": 2
+        },
+        "unknown_public_scope": {
+          "false_negative": 1
+        }
+      },
+      "composition_path_detection_rate": {
+        "denominator": 2,
+        "numerator": 0,
+        "percentage": 0.0,
+        "ratio": 0.0
+      },
+      "counts": {
+        "evaluation_error": 0,
+        "false_negative": 12,
+        "false_positive": 0,
+        "true_negative": 8,
+        "true_positive": 4
+      },
+      "excessive_scope_detection_rate": {
+        "denominator": 5,
+        "numerator": 0,
+        "percentage": 0.0,
+        "ratio": 0.0
+      },
+      "false_allow_rate": {
+        "denominator": 16,
+        "numerator": 12,
+        "percentage": 75.0,
+        "ratio": 0.75
+      },
+      "false_block_rate": {
+        "denominator": 8,
+        "numerator": 0,
+        "percentage": 0.0,
+        "ratio": 0.0
+      },
+      "missing_permission_detection_rate": {
+        "denominator": 3,
+        "numerator": 3,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "overall_classification_accuracy": {
+        "denominator": 24,
+        "numerator": 12,
+        "percentage": 50.0,
+        "ratio": 0.5
+      },
+      "precision": {
+        "denominator": 4,
+        "numerator": 4,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "runtime_drift_detection_rate": {
+        "denominator": 2,
+        "numerator": 0,
+        "percentage": 0.0,
+        "ratio": 0.0
+      },
+      "safe_case_allow_rate": {
+        "denominator": 8,
+        "numerator": 8,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "security_detection_rate_recall": {
+        "denominator": 16,
+        "numerator": 4,
+        "percentage": 25.0,
+        "ratio": 0.25
+      },
+      "unsafe_case_prevention_rate": {
+        "denominator": 16,
+        "numerator": 4,
+        "percentage": 25.0,
+        "ratio": 0.25
+      }
+    },
+    "least_privilege": {
+      "applicable_cases": 24,
+      "cases_where_authority_was_reduced": 10,
+      "cases_where_no_reduction_was_necessary": 14,
+      "interpretation": "Scope-count reduction is one authority-exposure indicator, not a complete security measure.",
+      "maximum_exposure_reduction_ratio": 1.0,
+      "mean_exposure_reduction_ratio": 0.3194444444444445,
+      "median_exposure_reduction_ratio": 0.0
+    },
+    "scope_sentry": {
+      "attack_category_coverage": {
+        "denominator": 11,
+        "numerator": 11,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "by_category": {
+        "exact_least_privilege": {
+          "true_negative": 6
+        },
+        "excessive_authority_without_misuse": {
+          "true_positive": 1
+        },
+        "excessive_read_authority": {
+          "true_positive": 1
+        },
+        "excessive_write_authority": {
+          "true_positive": 2
+        },
+        "manual_review": {
+          "true_positive": 1
+        },
+        "missing_permission": {
+          "true_positive": 2
+        },
+        "missing_runtime_scope": {
+          "true_positive": 1
+        },
+        "multiple_legitimate_intents": {
+          "true_negative": 1
+        },
+        "multiple_missing_permissions": {
+          "true_positive": 1
+        },
+        "runtime_capability_mismatch": {
+          "true_positive": 2
+        },
+        "runtime_scope_drift": {
+          "true_positive": 2
+        },
+        "safe_multi_grant_composition": {
+          "true_negative": 1
+        },
+        "unauthorized_composition": {
+          "true_positive": 2
+        },
+        "unknown_public_scope": {
+          "true_positive": 1
+        }
+      },
+      "composition_path_detection_rate": {
+        "denominator": 2,
+        "numerator": 2,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "counts": {
+        "evaluation_error": 0,
+        "false_negative": 0,
+        "false_positive": 0,
+        "true_negative": 8,
+        "true_positive": 16
+      },
+      "excessive_scope_detection_rate": {
+        "denominator": 5,
+        "numerator": 5,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "false_allow_rate": {
+        "denominator": 16,
+        "numerator": 0,
+        "percentage": 0.0,
+        "ratio": 0.0
+      },
+      "false_block_rate": {
+        "denominator": 8,
+        "numerator": 0,
+        "percentage": 0.0,
+        "ratio": 0.0
+      },
+      "missing_permission_detection_rate": {
+        "denominator": 3,
+        "numerator": 3,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "overall_classification_accuracy": {
+        "denominator": 24,
+        "numerator": 24,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "precision": {
+        "denominator": 16,
+        "numerator": 16,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "runtime_drift_detection_rate": {
+        "denominator": 2,
+        "numerator": 2,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "safe_case_allow_rate": {
+        "denominator": 8,
+        "numerator": 8,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "security_detection_rate_recall": {
+        "denominator": 16,
+        "numerator": 16,
+        "percentage": 100.0,
+        "ratio": 1.0
+      },
+      "unsafe_case_prevention_rate": {
+        "denominator": 16,
+        "numerator": 16,
+        "percentage": 100.0,
+        "ratio": 1.0
+      }
+    }
+  },
+  "cases": [
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_negative",
+      "baseline_matches_ground_truth": true,
+      "case_id": "safe-drive-read",
+      "category": "exact_least_privilege",
+      "description": "Exact Drive read authority.",
+      "expected_normalized_result": "permitted",
+      "ground_truth": {
+        "classification": "safe",
+        "expected_outcome": "permitted_safe",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The grant exactly supports file reading."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [
+          [
+            "drive.readonly"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_file_contents",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted_safe",
+        "original_granted_scopes": [
+          "drive.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": null
+      },
+      "scope_sentry_classification": "true_negative",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 18991200,
+          "median": 15561800.0,
+          "minimum": 10067800,
+          "p95_nearest_rank": 17626200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 20540100,
+          "median": 16788050.0,
+          "minimum": 10575200,
+          "p95_nearest_rank": 19691900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5100,
+          "median": 4600.0,
+          "minimum": 4400,
+          "p95_nearest_rank": 5000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 13200,
+          "median": 1600.0,
+          "minimum": 1500,
+          "p95_nearest_rank": 2500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 7600,
+          "median": 6300.0,
+          "minimum": 6100,
+          "p95_nearest_rank": 7000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 28600,
+          "median": 10300.0,
+          "minimum": 9500,
+          "p95_nearest_rank": 11800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "gmail.send"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "gmail.send"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "gmail.send"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_negative",
+      "baseline_matches_ground_truth": true,
+      "case_id": "safe-gmail-send",
+      "category": "exact_least_privilege",
+      "description": "Exact mail-send authority.",
+      "expected_normalized_result": "permitted",
+      "ground_truth": {
+        "classification": "safe",
+        "expected_outcome": "permitted_safe",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The grant exactly supports email sending."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "send_email_messages"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [
+          [
+            "gmail.send"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "send_email_messages",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "gmail.send"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted_safe",
+        "original_granted_scopes": [
+          "gmail.send"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "send_email_messages"
+        ],
+        "required_scopes": [
+          "gmail.send"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "gmail.send"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": null
+      },
+      "scope_sentry_classification": "true_negative",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 18881300,
+          "median": 15155500.0,
+          "minimum": 9334200,
+          "p95_nearest_rank": 18518700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 19616800,
+          "median": 15768400.0,
+          "minimum": 10056200,
+          "p95_nearest_rank": 18181900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4500,
+          "median": 4200.0,
+          "minimum": 4000,
+          "p95_nearest_rank": 4400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2100,
+          "median": 1400.0,
+          "minimum": 1200,
+          "p95_nearest_rank": 1600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 4800,
+          "median": 3900.0,
+          "minimum": 3800,
+          "p95_nearest_rank": 4300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 16300,
+          "median": 6500.0,
+          "minimum": 6100,
+          "p95_nearest_rank": 7300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "calendar.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "calendar.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "calendar.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_negative",
+      "baseline_matches_ground_truth": true,
+      "case_id": "safe-calendar-view",
+      "category": "exact_least_privilege",
+      "description": "Exact calendar read authority.",
+      "expected_normalized_result": "permitted",
+      "ground_truth": {
+        "classification": "safe",
+        "expected_outcome": "permitted_safe",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The grant exactly supports calendar viewing."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_calendar_events",
+          "read_calendar_events"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [
+          [
+            "calendar.readonly"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_calendar_events",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "calendar.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted_safe",
+        "original_granted_scopes": [
+          "calendar.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_calendar_events",
+          "read_calendar_events"
+        ],
+        "required_scopes": [
+          "calendar.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "calendar.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": null
+      },
+      "scope_sentry_classification": "true_negative",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 15965900,
+          "median": 14869000.0,
+          "minimum": 8935000,
+          "p95_nearest_rank": 15930100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 16565300,
+          "median": 15000000.0,
+          "minimum": 9009600,
+          "p95_nearest_rank": 16325800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 3400,
+          "median": 3000.0,
+          "minimum": 2800,
+          "p95_nearest_rank": 3300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1700,
+          "median": 1000.0,
+          "minimum": 900,
+          "p95_nearest_rank": 1200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 8800,
+          "median": 7450.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 8500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 7800,
+          "median": 6600.0,
+          "minimum": 6300,
+          "p95_nearest_rank": 7400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "contacts.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "contacts.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "contacts.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_negative",
+      "baseline_matches_ground_truth": true,
+      "case_id": "safe-contacts-read",
+      "category": "exact_least_privilege",
+      "description": "Exact contacts read authority.",
+      "expected_normalized_result": "permitted",
+      "ground_truth": {
+        "classification": "safe",
+        "expected_outcome": "permitted_safe",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The grant exactly supports contact reading."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_contacts",
+          "read_contacts"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [
+          [
+            "contacts.readonly"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_contacts",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "contacts.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted_safe",
+        "original_granted_scopes": [
+          "contacts.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_contacts",
+          "read_contacts"
+        ],
+        "required_scopes": [
+          "contacts.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "contacts.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": null
+      },
+      "scope_sentry_classification": "true_negative",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 16771900,
+          "median": 10832700.0,
+          "minimum": 7054700,
+          "p95_nearest_rank": 12926800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 16091200,
+          "median": 11850350.0,
+          "minimum": 7113700,
+          "p95_nearest_rank": 13949900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 18100,
+          "median": 4700.0,
+          "minimum": 4400,
+          "p95_nearest_rank": 5600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2300,
+          "median": 1600.0,
+          "minimum": 1500,
+          "p95_nearest_rank": 2000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 4800,
+          "median": 4100.0,
+          "minimum": 3900,
+          "p95_nearest_rank": 4500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 8000,
+          "median": 7000.0,
+          "minimum": 6600,
+          "p95_nearest_rank": 7800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "userinfo.profile"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "userinfo.profile"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "userinfo.profile"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_negative",
+      "baseline_matches_ground_truth": true,
+      "case_id": "safe-profile-read",
+      "category": "exact_least_privilege",
+      "description": "Exact profile read authority.",
+      "expected_normalized_result": "permitted",
+      "ground_truth": {
+        "classification": "safe",
+        "expected_outcome": "permitted_safe",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The grant exactly supports profile reading."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "read_user_profile"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [
+          [
+            "userinfo.profile"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_user_profile",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "userinfo.profile"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted_safe",
+        "original_granted_scopes": [
+          "userinfo.profile"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "read_user_profile"
+        ],
+        "required_scopes": [
+          "userinfo.profile"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "userinfo.profile"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": null
+      },
+      "scope_sentry_classification": "true_negative",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 13865300,
+          "median": 11160700.0,
+          "minimum": 7171700,
+          "p95_nearest_rank": 13140200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 15171700,
+          "median": 11709350.0,
+          "minimum": 8653900,
+          "p95_nearest_rank": 14446600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4900,
+          "median": 3900.0,
+          "minimum": 3700,
+          "p95_nearest_rank": 4200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1900,
+          "median": 1400.0,
+          "minimum": 1200,
+          "p95_nearest_rank": 1700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 7700,
+          "median": 6500.0,
+          "minimum": 6200,
+          "p95_nearest_rank": 7300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 10800,
+          "median": 9800.0,
+          "minimum": 9300,
+          "p95_nearest_rank": 10300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.file"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.file"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.file"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_negative",
+      "baseline_matches_ground_truth": true,
+      "case_id": "safe-file-upload",
+      "category": "exact_least_privilege",
+      "description": "Exact file upload authority.",
+      "expected_normalized_result": "permitted",
+      "ground_truth": {
+        "classification": "safe",
+        "expected_outcome": "permitted_safe",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The grant exactly supports file creation and update."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "create_files",
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "update_files"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [
+          [
+            "drive.file"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "create_files",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.file"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted_safe",
+        "original_granted_scopes": [
+          "drive.file"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "create_files",
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "update_files"
+        ],
+        "required_scopes": [
+          "drive.file"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.file"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": null
+      },
+      "scope_sentry_classification": "true_negative",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 32223300,
+          "median": 13610200.0,
+          "minimum": 8821300,
+          "p95_nearest_rank": 18812800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 21300500,
+          "median": 15029050.0,
+          "minimum": 9451400,
+          "p95_nearest_rank": 17363200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 30600,
+          "median": 4800.0,
+          "minimum": 4500,
+          "p95_nearest_rank": 5700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2600,
+          "median": 1600.0,
+          "minimum": 1500,
+          "p95_nearest_rank": 2200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5000,
+          "median": 4400.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 5000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 7700,
+          "median": 6500.0,
+          "minimum": 6100,
+          "p95_nearest_rank": 7200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_negative",
+      "baseline_matches_ground_truth": true,
+      "case_id": "safe-multiple-actions",
+      "category": "multiple_legitimate_intents",
+      "description": "Two legitimate actions in one grant.",
+      "expected_normalized_result": "permitted",
+      "ground_truth": {
+        "classification": "safe",
+        "expected_outcome": "permitted_safe",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Both intended actions have exact authority."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [
+          [
+            "drive.readonly",
+            "gmail.send"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "send_email_messages",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted_safe",
+        "original_granted_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 2,
+          "missing": 0,
+          "original_granted": 2,
+          "removed": 0,
+          "required": 2,
+          "synthesized": 2
+        },
+        "synthesized_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": null
+      },
+      "scope_sentry_classification": "true_negative",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 18196100,
+          "median": 14718850.0,
+          "minimum": 9125500,
+          "p95_nearest_rank": 17409500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 17885900,
+          "median": 12230700.0,
+          "minimum": 9328000,
+          "p95_nearest_rank": 17210700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5700,
+          "median": 4300.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2600,
+          "median": 1900.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 2500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 6500,
+          "median": 5800.0,
+          "minimum": 5600,
+          "p95_nearest_rank": 6200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 12600,
+          "median": 11700.0,
+          "minimum": 11200,
+          "p95_nearest_rank": 12400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_negative",
+      "baseline_matches_ground_truth": true,
+      "case_id": "safe-multi-grant",
+      "category": "safe_multi_grant_composition",
+      "description": "Legitimate authority split across two grants for one principal.",
+      "expected_normalized_result": "permitted",
+      "ground_truth": {
+        "classification": "safe",
+        "expected_outcome": "permitted_safe",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The same local principal has exactly the two intended authorities."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "composition": {
+          "capability_sources": {
+            "list_files": [
+              "safe-multi-reader"
+            ],
+            "read_file_contents": [
+              "safe-multi-reader"
+            ],
+            "read_file_metadata": [
+              "safe-multi-reader"
+            ],
+            "send_email_messages": [
+              "safe-multi-sender"
+            ]
+          },
+          "combined_capabilities": [
+            "list_files",
+            "read_file_contents",
+            "read_file_metadata",
+            "send_email_messages"
+          ],
+          "combined_scopes": [
+            "drive.readonly",
+            "gmail.send"
+          ],
+          "composition_graph": {
+            "edges": [
+              {
+                "relation": "HAS_SCOPE",
+                "source": "grant:safe-multi-reader",
+                "target": "grant:safe-multi-reader:scope:drive.readonly"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:safe-multi-reader:scope:drive.readonly",
+                "target": "capability:list_files"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:safe-multi-reader:scope:drive.readonly",
+                "target": "capability:read_file_contents"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:safe-multi-reader:scope:drive.readonly",
+                "target": "capability:read_file_metadata"
+              },
+              {
+                "relation": "HAS_SCOPE",
+                "source": "grant:safe-multi-sender",
+                "target": "grant:safe-multi-sender:scope:gmail.send"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:safe-multi-sender:scope:gmail.send",
+                "target": "capability:send_email_messages"
+              }
+            ],
+            "nodes": [
+              {
+                "capability": "list_files",
+                "id": "capability:list_files",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "capability": "read_file_contents",
+                "id": "capability:read_file_contents",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "capability": "read_file_metadata",
+                "id": "capability:read_file_metadata",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "capability": "send_email_messages",
+                "id": "capability:send_email_messages",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "grant_id": "safe-multi-reader",
+                "id": "grant:safe-multi-reader",
+                "node_type": "grant"
+              },
+              {
+                "grant_id": "safe-multi-reader",
+                "id": "grant:safe-multi-reader:scope:drive.readonly",
+                "node_type": "scope",
+                "scope": "drive.readonly",
+                "status": "recognized"
+              },
+              {
+                "grant_id": "safe-multi-sender",
+                "id": "grant:safe-multi-sender",
+                "node_type": "grant"
+              },
+              {
+                "grant_id": "safe-multi-sender",
+                "id": "grant:safe-multi-sender:scope:gmail.send",
+                "node_type": "scope",
+                "scope": "gmail.send",
+                "status": "recognized"
+              }
+            ]
+          },
+          "duplicated_scope_risk": 0.0,
+          "duplicated_scopes": [],
+          "excessive_capabilities": [],
+          "grant_count": 2,
+          "grants": [
+            {
+              "capabilities": [
+                "list_files",
+                "read_file_contents",
+                "read_file_metadata"
+              ],
+              "covers_all_required_capabilities": false,
+              "grant_id": "safe-multi-reader",
+              "granted_scopes": [
+                "drive.readonly"
+              ],
+              "intended_actions": [],
+              "recognized_scopes": [
+                "drive.readonly"
+              ],
+              "risk_score": 2.0,
+              "unknown_scopes": []
+            },
+            {
+              "capabilities": [
+                "send_email_messages"
+              ],
+              "covers_all_required_capabilities": false,
+              "grant_id": "safe-multi-sender",
+              "granted_scopes": [
+                "gmail.send"
+              ],
+              "intended_actions": [],
+              "recognized_scopes": [
+                "gmail.send"
+              ],
+              "risk_score": 4.0,
+              "unknown_scopes": []
+            }
+          ],
+          "intended_actions": [
+            "read files",
+            "send email"
+          ],
+          "least_privilege_plan": {
+            "covered_capabilities": [
+              "list_files",
+              "read_file_contents",
+              "read_file_metadata",
+              "send_email_messages"
+            ],
+            "explanation": "The current scope set already matches the least-privilege recommendation. No changes are needed.",
+            "optimization_method": "exhaustive_subset_evaluation",
+            "risk_after": 6.0,
+            "risk_before": 6.0,
+            "risk_delta": 0.0,
+            "risk_reduction_percentage": 0.0,
+            "scopes_to_add": [],
+            "scopes_to_keep": [
+              "drive.readonly",
+              "gmail.send"
+            ],
+            "scopes_to_remove": [],
+            "selected_scopes": [
+              "drive.readonly",
+              "gmail.send"
+            ],
+            "status": "complete",
+            "uncovered_capabilities": [],
+            "unnecessary_capabilities": []
+          },
+          "matched_capabilities": [
+            "list_files",
+            "read_file_contents",
+            "read_file_metadata",
+            "send_email_messages"
+          ],
+          "missing_capabilities": [],
+          "provider": "google",
+          "recognized_scopes": [
+            "drive.readonly",
+            "gmail.send"
+          ],
+          "recommendation": "The required capability set is satisfied only by composing multiple grants.",
+          "required_capabilities": [
+            "list_files",
+            "read_file_contents",
+            "read_file_metadata",
+            "send_email_messages"
+          ],
+          "required_scopes": [
+            "drive.readonly",
+            "gmail.send"
+          ],
+          "requires_composition": true,
+          "shared_capabilities": [],
+          "status": "complete",
+          "total_risk": 6.0,
+          "unique_scope_risk": 6.0,
+          "unknown_intents": [],
+          "unknown_scopes": []
+        },
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [
+          [
+            "drive.readonly",
+            "gmail.send"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_file_contents",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted_safe",
+        "original_granted_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 2,
+          "missing": 0,
+          "original_granted": 2,
+          "removed": 0,
+          "required": 2,
+          "synthesized": 2
+        },
+        "synthesized_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": null
+      },
+      "scope_sentry_classification": "true_negative",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "composition_analysis": {
+          "maximum": 17101800,
+          "median": 13118700.0,
+          "minimum": 9221100,
+          "p95_nearest_rank": 16149600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "contract_synthesis": {
+          "maximum": 18515700,
+          "median": 14799000.0,
+          "minimum": 9170000,
+          "p95_nearest_rank": 17049700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 39075200,
+          "median": 30128750.0,
+          "minimum": 20260800,
+          "p95_nearest_rank": 36375900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4600,
+          "median": 4300.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 4600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2900,
+          "median": 1900.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 2300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5200,
+          "median": 4500.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 39900,
+          "median": 14700.0,
+          "minimum": 13500,
+          "p95_nearest_rank": 19000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly",
+          "gmail.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "excessive-gmail-read",
+      "category": "excessive_read_authority",
+      "description": "Drive reader also has unrelated Gmail read access.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "remediated_then_permitted",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Gmail content authority must be removed before execution."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_email_messages",
+          "list_files",
+          "read_email_messages",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [
+          "gmail.readonly"
+        ],
+        "executed_scopes": [
+          [
+            "drive.readonly"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.5,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_file_contents",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "remediated_then_permitted",
+        "original_granted_scopes": [
+          "drive.readonly",
+          "gmail.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [
+          "gmail.readonly"
+        ],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 2,
+          "removed": 1,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 18741200,
+          "median": 15707100.0,
+          "minimum": 9961000,
+          "p95_nearest_rank": 17571100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 20668800,
+          "median": 16677800.0,
+          "minimum": 10247400,
+          "p95_nearest_rank": 18137100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 6900,
+          "median": 6100.0,
+          "minimum": 5800,
+          "p95_nearest_rank": 6500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2700,
+          "median": 1900.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 2500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 7800,
+          "median": 6200.0,
+          "minimum": 6000,
+          "p95_nearest_rank": 6800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 12500,
+          "median": 10450.0,
+          "minimum": 9800,
+          "p95_nearest_rank": 12000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.full"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "excessive-drive-full",
+      "category": "excessive_write_authority",
+      "description": "Full Drive authority for a read-only intent.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "remediated_then_permitted",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Write, delete, and permission-management authority must not execute."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "create_files",
+          "delete_files",
+          "list_files",
+          "manage_permissions",
+          "read_file_contents",
+          "read_file_metadata",
+          "update_files"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [
+          "drive.full"
+        ],
+        "executed_scopes": [
+          [
+            "drive.readonly"
+          ]
+        ],
+        "exposure_reduction_ratio": 1.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_file_contents",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [],
+        "missing_capabilities": [],
+        "missing_scopes": [
+          "drive.readonly"
+        ],
+        "normalized_result": "prevented",
+        "operational_outcome": "remediated_then_permitted",
+        "original_granted_scopes": [
+          "drive.full"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [
+          "drive.full"
+        ],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 0,
+          "missing": 1,
+          "original_granted": 1,
+          "removed": 1,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 21434900,
+          "median": 15831900.0,
+          "minimum": 9895300,
+          "p95_nearest_rank": 19310700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 49321700,
+          "median": 12893950.0,
+          "minimum": 9964000,
+          "p95_nearest_rank": 25839300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5200,
+          "median": 4500.0,
+          "minimum": 4200,
+          "p95_nearest_rank": 5100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2200,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5100,
+          "median": 4500.0,
+          "minimum": 4300,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 9300,
+          "median": 7400.0,
+          "minimum": 6800,
+          "p95_nearest_rank": 8700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "gmail.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "gmail.full"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "gmail.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "excessive-gmail-full",
+      "category": "excessive_write_authority",
+      "description": "Full Gmail authority for a read-only mail intent.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "remediated_then_permitted",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Send, draft, and delete authority must be removed."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "delete_email_messages",
+          "draft_email_messages",
+          "list_email_messages",
+          "read_email_messages",
+          "send_email_messages"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [
+          "gmail.full"
+        ],
+        "executed_scopes": [
+          [
+            "gmail.readonly"
+          ]
+        ],
+        "exposure_reduction_ratio": 1.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_email_messages",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [],
+        "missing_capabilities": [],
+        "missing_scopes": [
+          "gmail.readonly"
+        ],
+        "normalized_result": "prevented",
+        "operational_outcome": "remediated_then_permitted",
+        "original_granted_scopes": [
+          "gmail.full"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [
+          "gmail.full"
+        ],
+        "required_capabilities": [
+          "list_email_messages",
+          "read_email_messages"
+        ],
+        "required_scopes": [
+          "gmail.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 0,
+          "missing": 1,
+          "original_granted": 1,
+          "removed": 1,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "gmail.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 68857200,
+          "median": 10399450.0,
+          "minimum": 8820400,
+          "p95_nearest_rank": 36445500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 18772900,
+          "median": 15024700.0,
+          "minimum": 9186300,
+          "p95_nearest_rank": 17957200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5300,
+          "median": 4400.0,
+          "minimum": 4200,
+          "p95_nearest_rank": 5000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2200,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 9700,
+          "median": 8000.0,
+          "minimum": 7400,
+          "p95_nearest_rank": 9100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 39600,
+          "median": 13300.0,
+          "minimum": 7200,
+          "p95_nearest_rank": 14900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly",
+          "https://example.invalid/oauth/custom"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "unknown-extra-scope",
+      "category": "unknown_public_scope",
+      "description": "A well-formed unknown scope accompanies Drive read authority.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "remediated_then_permitted",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Unknown authority is untrusted and must be excluded."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [
+          "https://example.invalid/oauth/custom"
+        ],
+        "executed_scopes": [
+          [
+            "drive.readonly"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.5,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_file_contents",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "remediated_then_permitted",
+        "original_granted_scopes": [
+          "drive.readonly",
+          "https://example.invalid/oauth/custom"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [
+          "https://example.invalid/oauth/custom"
+        ],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 2,
+          "removed": 1,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 18718900,
+          "median": 16409100.0,
+          "minimum": 10883900,
+          "p95_nearest_rank": 18142100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 23998600,
+          "median": 15496700.0,
+          "minimum": 10669800,
+          "p95_nearest_rank": 18434600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 11800,
+          "median": 6000.0,
+          "minimum": 5700,
+          "p95_nearest_rank": 7000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 5600,
+          "median": 1900.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 3000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 7500,
+          "median": 6200.0,
+          "minimum": 5800,
+          "p95_nearest_rank": 7100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 22700,
+          "median": 9600.0,
+          "minimum": 8800,
+          "p95_nearest_rank": 10800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [],
+        "excessive_scopes_detected": [],
+        "explanation": "Static scope coverage is missing: ['drive.readonly'].",
+        "granted_scopes": [
+          "gmail.send"
+        ],
+        "missing_required_scopes": [
+          "drive.readonly"
+        ],
+        "normalized_result": "prevented",
+        "operational_outcome": "blocked_missing_scope",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_positive",
+      "baseline_matches_ground_truth": true,
+      "case_id": "missing-drive-read",
+      "category": "missing_permission",
+      "description": "Drive reading is requested without Drive authority.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "contract_not_created",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Missing required authority must prevent contract execution."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "send_email_messages"
+        ],
+        "composition": null,
+        "contract_created": false,
+        "excessive_scopes": [
+          "gmail.send"
+        ],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 1.0,
+        "gateway_decisions": [],
+        "matched_scopes": [],
+        "missing_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "missing_scopes": [
+          "drive.readonly"
+        ],
+        "normalized_result": "prevented",
+        "operational_outcome": "contract_not_created",
+        "original_granted_scopes": [
+          "gmail.send"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [
+          "gmail.send"
+        ],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 0,
+          "missing": 1,
+          "original_granted": 1,
+          "removed": 1,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 20324400,
+          "median": 15475900.0,
+          "minimum": 10396600,
+          "p95_nearest_rank": 18453100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 20695000,
+          "median": 16058400.0,
+          "minimum": 11052500,
+          "p95_nearest_rank": 19169700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 6600,
+          "median": 5300.0,
+          "minimum": 4900,
+          "p95_nearest_rank": 6200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2800,
+          "median": 1700.0,
+          "minimum": 1600,
+          "p95_nearest_rank": 2100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11700,
+          "median": 9650.0,
+          "minimum": 9100,
+          "p95_nearest_rank": 11600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [],
+        "excessive_scopes_detected": [],
+        "explanation": "Static scope coverage is missing: ['drive.readonly', 'gmail.send'].",
+        "granted_scopes": [
+          "userinfo.profile"
+        ],
+        "missing_required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "normalized_result": "prevented",
+        "operational_outcome": "blocked_missing_scope",
+        "required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_positive",
+      "baseline_matches_ground_truth": true,
+      "case_id": "multiple-missing-scopes",
+      "category": "multiple_missing_permissions",
+      "description": "Two actions are requested with unrelated profile authority.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "contract_not_created",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Both required scope families are absent."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "read_user_profile"
+        ],
+        "composition": null,
+        "contract_created": false,
+        "excessive_scopes": [
+          "userinfo.profile"
+        ],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 1.0,
+        "gateway_decisions": [],
+        "matched_scopes": [],
+        "missing_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "missing_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "normalized_result": "prevented",
+        "operational_outcome": "contract_not_created",
+        "original_granted_scopes": [
+          "userinfo.profile"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [
+          "userinfo.profile"
+        ],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 0,
+          "missing": 2,
+          "original_granted": 1,
+          "removed": 1,
+          "required": 2,
+          "synthesized": 2
+        },
+        "synthesized_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 18614400,
+          "median": 14440600.0,
+          "minimum": 9131400,
+          "p95_nearest_rank": 18381300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 22512200,
+          "median": 14778950.0,
+          "minimum": 9547300,
+          "p95_nearest_rank": 17994600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4900,
+          "median": 4050.0,
+          "minimum": 3800,
+          "p95_nearest_rank": 4500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2900,
+          "median": 1800.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 2300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 14400,
+          "median": 12800.0,
+          "minimum": 12100,
+          "p95_nearest_rank": 13900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [],
+        "excessive_scopes_detected": [],
+        "explanation": "Static scope coverage is missing: ['calendar.events'].",
+        "granted_scopes": [
+          "calendar.readonly"
+        ],
+        "missing_required_scopes": [
+          "calendar.events"
+        ],
+        "normalized_result": "prevented",
+        "operational_outcome": "blocked_missing_scope",
+        "required_scopes": [
+          "calendar.events"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "true_positive",
+      "baseline_matches_ground_truth": true,
+      "case_id": "partial-calendar-authority",
+      "category": "missing_permission",
+      "description": "Calendar management is requested with read-only authority.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "contract_not_created",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Create, update, and delete capabilities are missing."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_calendar_events",
+          "read_calendar_events"
+        ],
+        "composition": null,
+        "contract_created": false,
+        "excessive_scopes": [
+          "calendar.readonly"
+        ],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 1.0,
+        "gateway_decisions": [],
+        "matched_scopes": [],
+        "missing_capabilities": [
+          "create_calendar_events",
+          "delete_calendar_events",
+          "update_calendar_events"
+        ],
+        "missing_scopes": [
+          "calendar.events"
+        ],
+        "normalized_result": "prevented",
+        "operational_outcome": "contract_not_created",
+        "original_granted_scopes": [
+          "calendar.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [
+          "calendar.readonly"
+        ],
+        "required_capabilities": [
+          "create_calendar_events",
+          "delete_calendar_events",
+          "read_calendar_events",
+          "update_calendar_events"
+        ],
+        "required_scopes": [
+          "calendar.events"
+        ],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 0,
+          "missing": 1,
+          "original_granted": 1,
+          "removed": 1,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "calendar.events"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 16963700,
+          "median": 14342950.0,
+          "minimum": 12048900,
+          "p95_nearest_rank": 16192200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 17309300,
+          "median": 14365550.0,
+          "minimum": 9419100,
+          "p95_nearest_rank": 16353500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5300,
+          "median": 4400.0,
+          "minimum": 4200,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2400,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11900,
+          "median": 9900.0,
+          "minimum": 9200,
+          "p95_nearest_rank": 10900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "known-runtime-drift",
+      "category": "runtime_scope_drift",
+      "description": "Known Gmail send authority appears during Drive-only execution.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "quarantined",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Unexpected known scope drift must quarantine the contract."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "send_email_messages",
+            "decision": "quarantine",
+            "missing_scopes": [],
+            "reason_code": "unexpected_scope_drift",
+            "unexpected_scopes": [
+              "gmail.send"
+            ]
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "quarantined",
+        "original_granted_scopes": [
+          "drive.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 88975400,
+          "median": 15136750.0,
+          "minimum": 9740400,
+          "p95_nearest_rank": 19761400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 70663400,
+          "median": 15581150.0,
+          "minimum": 10058800,
+          "p95_nearest_rank": 19738700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 17700,
+          "median": 4500.0,
+          "minimum": 4200,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2400,
+          "median": 1500.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 2000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 15900,
+          "median": 5100.0,
+          "minimum": 4800,
+          "p95_nearest_rank": 5900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 10900,
+          "median": 9400.0,
+          "minimum": 8900,
+          "p95_nearest_rank": 10500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "unknown-runtime-drift",
+      "category": "runtime_scope_drift",
+      "description": "Unknown well-formed authority appears at runtime.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "quarantined",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Unknown runtime scope drift must quarantine the contract."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_file_contents",
+            "decision": "quarantine",
+            "missing_scopes": [],
+            "reason_code": "unexpected_scope_drift",
+            "unexpected_scopes": [
+              "https://example.invalid/oauth/drift"
+            ]
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "quarantined",
+        "original_granted_scopes": [
+          "drive.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 20001800,
+          "median": 15688400.0,
+          "minimum": 11179600,
+          "p95_nearest_rank": 19285500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 21164400,
+          "median": 16593400.0,
+          "minimum": 11611600,
+          "p95_nearest_rank": 18719900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4000,
+          "median": 3400.0,
+          "minimum": 3200,
+          "p95_nearest_rank": 3800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1900,
+          "median": 1200.0,
+          "minimum": 1000,
+          "p95_nearest_rank": 1600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 6000,
+          "median": 5000.0,
+          "minimum": 4800,
+          "p95_nearest_rank": 5600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11200,
+          "median": 9300.0,
+          "minimum": 8900,
+          "p95_nearest_rank": 10400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "unauthorized-email-send",
+      "category": "runtime_capability_mismatch",
+      "description": "A Drive-only contract is used to attempt email sending.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "blocked",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The capability is outside the intent-locked contract."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "send_email_messages",
+            "decision": "block",
+            "missing_scopes": [],
+            "reason_code": "capability_not_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "blocked",
+        "original_granted_scopes": [
+          "drive.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 18530400,
+          "median": 15424850.0,
+          "minimum": 10047000,
+          "p95_nearest_rank": 18435200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 29483800,
+          "median": 16291400.0,
+          "minimum": 10097900,
+          "p95_nearest_rank": 19715100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4500,
+          "median": 4200.0,
+          "minimum": 4000,
+          "p95_nearest_rank": 4300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2000,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5800,
+          "median": 5000.0,
+          "minimum": 4700,
+          "p95_nearest_rank": 5400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11600,
+          "median": 9600.0,
+          "minimum": 9000,
+          "p95_nearest_rank": 10900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "unauthorized-email-read",
+      "category": "runtime_capability_mismatch",
+      "description": "A Drive-only contract is used to attempt email reading.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "blocked",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The capability is outside the intent-locked contract."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_email_messages",
+            "decision": "block",
+            "missing_scopes": [],
+            "reason_code": "capability_not_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "blocked",
+        "original_granted_scopes": [
+          "drive.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 21390700,
+          "median": 15775950.0,
+          "minimum": 9713800,
+          "p95_nearest_rank": 18847000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 18415800,
+          "median": 15861850.0,
+          "minimum": 9981400,
+          "p95_nearest_rank": 17826100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 6000,
+          "median": 4150.0,
+          "minimum": 3900,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2200,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5200,
+          "median": 4600.0,
+          "minimum": 4400,
+          "p95_nearest_rank": 5100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 9500,
+          "median": 8200.0,
+          "minimum": 7800,
+          "p95_nearest_rank": 9100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "missing-observed-contract-scope",
+      "category": "missing_runtime_scope",
+      "description": "One required contract scope disappears at runtime.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "blocked",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "The gateway must block when the observed grant is incomplete."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_file_contents",
+            "decision": "block",
+            "missing_scopes": [
+              "gmail.send"
+            ],
+            "reason_code": "missing_required_scopes",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "blocked",
+        "original_granted_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "required_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "scope_counts": {
+          "excessive": 0,
+          "matched": 2,
+          "missing": 0,
+          "original_granted": 2,
+          "removed": 0,
+          "required": 2,
+          "synthesized": 2
+        },
+        "synthesized_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 19380100,
+          "median": 14284250.0,
+          "minimum": 9383000,
+          "p95_nearest_rank": 17986900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 14805600,
+          "median": 10431250.0,
+          "minimum": 9249000,
+          "p95_nearest_rank": 13652400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5400,
+          "median": 4800.0,
+          "minimum": 4600,
+          "p95_nearest_rank": 5100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 3400,
+          "median": 2100.0,
+          "minimum": 1900,
+          "p95_nearest_rank": 2800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 37800,
+          "median": 3600.0,
+          "minimum": 3300,
+          "p95_nearest_rank": 4200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 75900,
+          "median": 9900.0,
+          "minimum": 9000,
+          "p95_nearest_rank": 16700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "drive-email-exfiltration",
+      "category": "unauthorized_composition",
+      "description": "Drive content can flow into an unintended email sender.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "skipped_unsafe_composition",
+        "expected_unauthorized_path_count": 1,
+        "explanation": "The cross-grant exfiltration path must prevent execution."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "composition": {
+          "capability_sources": {
+            "list_files": [
+              "exfil-reader"
+            ],
+            "read_file_contents": [
+              "exfil-reader"
+            ],
+            "read_file_metadata": [
+              "exfil-reader"
+            ],
+            "send_email_messages": [
+              "exfil-sender"
+            ]
+          },
+          "combined_capabilities": [
+            "list_files",
+            "read_file_contents",
+            "read_file_metadata",
+            "send_email_messages"
+          ],
+          "combined_scopes": [
+            "drive.readonly",
+            "gmail.send"
+          ],
+          "composition_graph": {
+            "edges": [
+              {
+                "relation": "HAS_SCOPE",
+                "source": "grant:exfil-reader",
+                "target": "grant:exfil-reader:scope:drive.readonly"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:exfil-reader:scope:drive.readonly",
+                "target": "capability:list_files"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:exfil-reader:scope:drive.readonly",
+                "target": "capability:read_file_contents"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:exfil-reader:scope:drive.readonly",
+                "target": "capability:read_file_metadata"
+              },
+              {
+                "relation": "HAS_SCOPE",
+                "source": "grant:exfil-sender",
+                "target": "grant:exfil-sender:scope:gmail.send"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:exfil-sender:scope:gmail.send",
+                "target": "capability:send_email_messages"
+              }
+            ],
+            "nodes": [
+              {
+                "capability": "list_files",
+                "id": "capability:list_files",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "capability": "read_file_contents",
+                "id": "capability:read_file_contents",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "capability": "read_file_metadata",
+                "id": "capability:read_file_metadata",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "capability": "send_email_messages",
+                "id": "capability:send_email_messages",
+                "node_type": "capability",
+                "status": "excessive"
+              },
+              {
+                "grant_id": "exfil-reader",
+                "id": "grant:exfil-reader",
+                "node_type": "grant"
+              },
+              {
+                "grant_id": "exfil-reader",
+                "id": "grant:exfil-reader:scope:drive.readonly",
+                "node_type": "scope",
+                "scope": "drive.readonly",
+                "status": "recognized"
+              },
+              {
+                "grant_id": "exfil-sender",
+                "id": "grant:exfil-sender",
+                "node_type": "grant"
+              },
+              {
+                "grant_id": "exfil-sender",
+                "id": "grant:exfil-sender:scope:gmail.send",
+                "node_type": "scope",
+                "scope": "gmail.send",
+                "status": "recognized"
+              }
+            ]
+          },
+          "duplicated_scope_risk": 0.0,
+          "duplicated_scopes": [],
+          "excessive_capabilities": [
+            "send_email_messages"
+          ],
+          "grant_count": 2,
+          "grants": [
+            {
+              "capabilities": [
+                "list_files",
+                "read_file_contents",
+                "read_file_metadata"
+              ],
+              "covers_all_required_capabilities": true,
+              "grant_id": "exfil-reader",
+              "granted_scopes": [
+                "drive.readonly"
+              ],
+              "intended_actions": [],
+              "recognized_scopes": [
+                "drive.readonly"
+              ],
+              "risk_score": 2.0,
+              "unknown_scopes": []
+            },
+            {
+              "capabilities": [
+                "send_email_messages"
+              ],
+              "covers_all_required_capabilities": false,
+              "grant_id": "exfil-sender",
+              "granted_scopes": [
+                "gmail.send"
+              ],
+              "intended_actions": [],
+              "recognized_scopes": [
+                "gmail.send"
+              ],
+              "risk_score": 4.0,
+              "unknown_scopes": []
+            }
+          ],
+          "intended_actions": [
+            "read files"
+          ],
+          "least_privilege_plan": {
+            "covered_capabilities": [
+              "list_files",
+              "read_file_contents",
+              "read_file_metadata"
+            ],
+            "explanation": "Scope 'gmail.send' should be removed because its capabilities (send_email_messages) are not required for the selected intent. This change reduces the overall risk score by 66.67%.",
+            "optimization_method": "exhaustive_subset_evaluation",
+            "risk_after": 2.0,
+            "risk_before": 6.0,
+            "risk_delta": 4.0,
+            "risk_reduction_percentage": 66.67,
+            "scopes_to_add": [],
+            "scopes_to_keep": [
+              "drive.readonly"
+            ],
+            "scopes_to_remove": [
+              "gmail.send"
+            ],
+            "selected_scopes": [
+              "drive.readonly"
+            ],
+            "status": "complete",
+            "uncovered_capabilities": [],
+            "unnecessary_capabilities": []
+          },
+          "matched_capabilities": [
+            "list_files",
+            "read_file_contents",
+            "read_file_metadata"
+          ],
+          "missing_capabilities": [],
+          "provider": "google",
+          "recognized_scopes": [
+            "drive.readonly",
+            "gmail.send"
+          ],
+          "recommendation": "The composed grants contain excessive or duplicated authority; use the least-privilege plan to reduce exposure.",
+          "required_capabilities": [
+            "list_files",
+            "read_file_contents",
+            "read_file_metadata"
+          ],
+          "required_scopes": [
+            "drive.readonly"
+          ],
+          "requires_composition": false,
+          "shared_capabilities": [],
+          "status": "complete",
+          "total_risk": 6.0,
+          "unique_scope_risk": 6.0,
+          "unknown_intents": [],
+          "unknown_scopes": []
+        },
+        "contract_created": false,
+        "excessive_scopes": [
+          "gmail.send"
+        ],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 0.5,
+        "gateway_decisions": [],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "skipped_unsafe_composition",
+        "original_granted_scopes": [
+          "drive.readonly",
+          "gmail.send"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [
+          "Break the data-flow link or remove the unnecessary email-sending scope from the target grant."
+        ],
+        "removed_scopes": [
+          "gmail.send"
+        ],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 2,
+          "removed": 1,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 1,
+        "unauthorized_paths": [
+          {
+            "authorized_by_intent": false,
+            "data_type": "drive_file_contents",
+            "remediation": "Break the data-flow link or remove the unnecessary email-sending scope from the target grant.",
+            "source_capability": "read_file_contents",
+            "source_grant_id": "exfil-reader",
+            "target_capability": "send_email_messages",
+            "target_grant_id": "exfil-sender"
+          }
+        ],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "composition_analysis": {
+          "maximum": 13784600,
+          "median": 11240700.0,
+          "minimum": 9868100,
+          "p95_nearest_rank": 12776200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "contract_synthesis": {
+          "maximum": 18907400,
+          "median": 11290350.0,
+          "minimum": 9820900,
+          "p95_nearest_rank": 17259600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 107154100,
+          "median": 22412900.0,
+          "minimum": 20987800,
+          "p95_nearest_rank": 35847700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4300,
+          "median": 3400.0,
+          "minimum": 3300,
+          "p95_nearest_rank": 3700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1400,
+          "median": 1000.0,
+          "minimum": 900,
+          "p95_nearest_rank": 1200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 15900,
+          "median": 6600.0,
+          "minimum": 6400,
+          "p95_nearest_rank": 7100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "drive.readonly",
+          "gmail.compose",
+          "gmail.send"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "multiple-exfiltration-paths",
+      "category": "unauthorized_composition",
+      "description": "Two email-capable grants receive Drive content.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "skipped_unsafe_composition",
+        "expected_unauthorized_path_count": 2,
+        "explanation": "Every unauthorized cross-grant path must prevent execution."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "draft_email_messages",
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata",
+          "send_email_messages"
+        ],
+        "composition": {
+          "capability_sources": {
+            "draft_email_messages": [
+              "multi-composer"
+            ],
+            "list_files": [
+              "multi-reader"
+            ],
+            "read_file_contents": [
+              "multi-reader"
+            ],
+            "read_file_metadata": [
+              "multi-reader"
+            ],
+            "send_email_messages": [
+              "multi-composer",
+              "multi-sender"
+            ]
+          },
+          "combined_capabilities": [
+            "draft_email_messages",
+            "list_files",
+            "read_file_contents",
+            "read_file_metadata",
+            "send_email_messages"
+          ],
+          "combined_scopes": [
+            "drive.readonly",
+            "gmail.compose",
+            "gmail.send"
+          ],
+          "composition_graph": {
+            "edges": [
+              {
+                "relation": "HAS_SCOPE",
+                "source": "grant:multi-composer",
+                "target": "grant:multi-composer:scope:gmail.compose"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:multi-composer:scope:gmail.compose",
+                "target": "capability:draft_email_messages"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:multi-composer:scope:gmail.compose",
+                "target": "capability:send_email_messages"
+              },
+              {
+                "relation": "HAS_SCOPE",
+                "source": "grant:multi-reader",
+                "target": "grant:multi-reader:scope:drive.readonly"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:multi-reader:scope:drive.readonly",
+                "target": "capability:list_files"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:multi-reader:scope:drive.readonly",
+                "target": "capability:read_file_contents"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:multi-reader:scope:drive.readonly",
+                "target": "capability:read_file_metadata"
+              },
+              {
+                "relation": "HAS_SCOPE",
+                "source": "grant:multi-sender",
+                "target": "grant:multi-sender:scope:gmail.send"
+              },
+              {
+                "relation": "ENABLES",
+                "source": "grant:multi-sender:scope:gmail.send",
+                "target": "capability:send_email_messages"
+              }
+            ],
+            "nodes": [
+              {
+                "capability": "draft_email_messages",
+                "id": "capability:draft_email_messages",
+                "node_type": "capability",
+                "status": "excessive"
+              },
+              {
+                "capability": "list_files",
+                "id": "capability:list_files",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "capability": "read_file_contents",
+                "id": "capability:read_file_contents",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "capability": "read_file_metadata",
+                "id": "capability:read_file_metadata",
+                "node_type": "capability",
+                "status": "required"
+              },
+              {
+                "capability": "send_email_messages",
+                "id": "capability:send_email_messages",
+                "node_type": "capability",
+                "status": "excessive"
+              },
+              {
+                "grant_id": "multi-composer",
+                "id": "grant:multi-composer",
+                "node_type": "grant"
+              },
+              {
+                "grant_id": "multi-composer",
+                "id": "grant:multi-composer:scope:gmail.compose",
+                "node_type": "scope",
+                "scope": "gmail.compose",
+                "status": "recognized"
+              },
+              {
+                "grant_id": "multi-reader",
+                "id": "grant:multi-reader",
+                "node_type": "grant"
+              },
+              {
+                "grant_id": "multi-reader",
+                "id": "grant:multi-reader:scope:drive.readonly",
+                "node_type": "scope",
+                "scope": "drive.readonly",
+                "status": "recognized"
+              },
+              {
+                "grant_id": "multi-sender",
+                "id": "grant:multi-sender",
+                "node_type": "grant"
+              },
+              {
+                "grant_id": "multi-sender",
+                "id": "grant:multi-sender:scope:gmail.send",
+                "node_type": "scope",
+                "scope": "gmail.send",
+                "status": "recognized"
+              }
+            ]
+          },
+          "duplicated_scope_risk": 0.0,
+          "duplicated_scopes": [],
+          "excessive_capabilities": [
+            "draft_email_messages",
+            "send_email_messages"
+          ],
+          "grant_count": 3,
+          "grants": [
+            {
+              "capabilities": [
+                "draft_email_messages",
+                "send_email_messages"
+              ],
+              "covers_all_required_capabilities": false,
+              "grant_id": "multi-composer",
+              "granted_scopes": [
+                "gmail.compose"
+              ],
+              "intended_actions": [],
+              "recognized_scopes": [
+                "gmail.compose"
+              ],
+              "risk_score": 4.5,
+              "unknown_scopes": []
+            },
+            {
+              "capabilities": [
+                "list_files",
+                "read_file_contents",
+                "read_file_metadata"
+              ],
+              "covers_all_required_capabilities": true,
+              "grant_id": "multi-reader",
+              "granted_scopes": [
+                "drive.readonly"
+              ],
+              "intended_actions": [],
+              "recognized_scopes": [
+                "drive.readonly"
+              ],
+              "risk_score": 2.0,
+              "unknown_scopes": []
+            },
+            {
+              "capabilities": [
+                "send_email_messages"
+              ],
+              "covers_all_required_capabilities": false,
+              "grant_id": "multi-sender",
+              "granted_scopes": [
+                "gmail.send"
+              ],
+              "intended_actions": [],
+              "recognized_scopes": [
+                "gmail.send"
+              ],
+              "risk_score": 4.0,
+              "unknown_scopes": []
+            }
+          ],
+          "intended_actions": [
+            "read files"
+          ],
+          "least_privilege_plan": {
+            "covered_capabilities": [
+              "list_files",
+              "read_file_contents",
+              "read_file_metadata"
+            ],
+            "explanation": "Scope 'gmail.compose' should be removed because its capabilities (send_email_messages, draft_email_messages) are not required for the selected intent. Scope 'gmail.send' should be removed because its capabilities (send_email_messages) are not required for the selected intent. This change reduces the overall risk score by 80.95%.",
+            "optimization_method": "exhaustive_subset_evaluation",
+            "risk_after": 2.0,
+            "risk_before": 10.5,
+            "risk_delta": 8.5,
+            "risk_reduction_percentage": 80.95,
+            "scopes_to_add": [],
+            "scopes_to_keep": [
+              "drive.readonly"
+            ],
+            "scopes_to_remove": [
+              "gmail.compose",
+              "gmail.send"
+            ],
+            "selected_scopes": [
+              "drive.readonly"
+            ],
+            "status": "complete",
+            "uncovered_capabilities": [],
+            "unnecessary_capabilities": []
+          },
+          "matched_capabilities": [
+            "list_files",
+            "read_file_contents",
+            "read_file_metadata"
+          ],
+          "missing_capabilities": [],
+          "provider": "google",
+          "recognized_scopes": [
+            "drive.readonly",
+            "gmail.compose",
+            "gmail.send"
+          ],
+          "recommendation": "The composed grants contain excessive or duplicated authority; use the least-privilege plan to reduce exposure.",
+          "required_capabilities": [
+            "list_files",
+            "read_file_contents",
+            "read_file_metadata"
+          ],
+          "required_scopes": [
+            "drive.readonly"
+          ],
+          "requires_composition": false,
+          "shared_capabilities": [
+            "send_email_messages"
+          ],
+          "status": "complete",
+          "total_risk": 10.5,
+          "unique_scope_risk": 10.5,
+          "unknown_intents": [],
+          "unknown_scopes": []
+        },
+        "contract_created": false,
+        "excessive_scopes": [
+          "gmail.compose",
+          "gmail.send"
+        ],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 0.6666666666666666,
+        "gateway_decisions": [],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "skipped_unsafe_composition",
+        "original_granted_scopes": [
+          "drive.readonly",
+          "gmail.compose",
+          "gmail.send"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [
+          "Break the data-flow link or remove the unnecessary email-sending scope from the target grant."
+        ],
+        "removed_scopes": [
+          "gmail.compose",
+          "gmail.send"
+        ],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 2,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 3,
+          "removed": 2,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 2,
+        "unauthorized_paths": [
+          {
+            "authorized_by_intent": false,
+            "data_type": "drive_file_contents",
+            "remediation": "Break the data-flow link or remove the unnecessary email-sending scope from the target grant.",
+            "source_capability": "read_file_contents",
+            "source_grant_id": "multi-reader",
+            "target_capability": "send_email_messages",
+            "target_grant_id": "multi-sender"
+          },
+          {
+            "authorized_by_intent": false,
+            "data_type": "drive_file_contents",
+            "remediation": "Break the data-flow link or remove the unnecessary email-sending scope from the target grant.",
+            "source_capability": "read_file_contents",
+            "source_grant_id": "multi-reader",
+            "target_capability": "send_email_messages",
+            "target_grant_id": "multi-composer"
+          }
+        ],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "composition_analysis": {
+          "maximum": 20430700,
+          "median": 15337650.0,
+          "minimum": 10323000,
+          "p95_nearest_rank": 18912400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "contract_synthesis": {
+          "maximum": 20139000,
+          "median": 10945650.0,
+          "minimum": 9783700,
+          "p95_nearest_rank": 14446600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 36543400,
+          "median": 31361200.0,
+          "minimum": 21164500,
+          "p95_nearest_rank": 35453500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 13900,
+          "median": 3650.0,
+          "minimum": 3400,
+          "p95_nearest_rank": 4100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1600,
+          "median": 1000.0,
+          "minimum": 900,
+          "p95_nearest_rank": 1300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11000,
+          "median": 10200.0,
+          "minimum": 9800,
+          "p95_nearest_rank": 10800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [
+          "drive.readonly"
+        ],
+        "excessive_scopes_detected": [],
+        "explanation": "Every required scope is covered by an equal or catalogue-defined broader granted scope.",
+        "granted_scopes": [
+          "calendar.full",
+          "drive.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "permitted",
+        "operational_outcome": "permitted",
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": []
+      },
+      "baseline_classification": "false_negative",
+      "baseline_matches_ground_truth": false,
+      "case_id": "excessive-calendar-no-misuse",
+      "category": "excessive_authority_without_misuse",
+      "description": "Unused calendar management authority accompanies safe Drive reading.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "remediated_then_permitted",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Excess authority must be removed even without immediate misuse."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "create_calendar_events",
+          "delete_calendar_events",
+          "list_calendar_events",
+          "list_files",
+          "manage_calendar_settings",
+          "read_calendar_events",
+          "read_file_contents",
+          "read_file_metadata",
+          "update_calendar_events"
+        ],
+        "composition": null,
+        "contract_created": true,
+        "excessive_scopes": [
+          "calendar.full"
+        ],
+        "executed_scopes": [
+          [
+            "drive.readonly"
+          ]
+        ],
+        "exposure_reduction_ratio": 0.5,
+        "gateway_decisions": [
+          {
+            "attempted_capability": "read_file_contents",
+            "decision": "allow",
+            "missing_scopes": [],
+            "reason_code": "capability_allowed",
+            "unexpected_scopes": []
+          }
+        ],
+        "matched_scopes": [
+          "drive.readonly"
+        ],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "remediated_then_permitted",
+        "original_granted_scopes": [
+          "calendar.full",
+          "drive.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [
+          "calendar.full"
+        ],
+        "required_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "required_scopes": [
+          "drive.readonly"
+        ],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 1,
+          "missing": 0,
+          "original_granted": 2,
+          "removed": 1,
+          "required": 1,
+          "synthesized": 1
+        },
+        "synthesized_scopes": [
+          "drive.readonly"
+        ],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 19813800,
+          "median": 15974400.0,
+          "minimum": 11934600,
+          "p95_nearest_rank": 18890800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 22155100,
+          "median": 16545750.0,
+          "minimum": 11386700,
+          "p95_nearest_rank": 20449500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 3900,
+          "median": 3200.0,
+          "minimum": 3100,
+          "p95_nearest_rank": 3500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1500,
+          "median": 900.0,
+          "minimum": 800,
+          "p95_nearest_rank": 1300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 8200,
+          "median": 6600.0,
+          "minimum": 6300,
+          "p95_nearest_rank": 7600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 37700,
+          "median": 12200.0,
+          "minimum": 11300,
+          "p95_nearest_rank": 13500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    {
+      "baseline": {
+        "covered_required_scopes": [],
+        "excessive_scopes_detected": [],
+        "explanation": "Unmapped intent requires manual review; automatic execution is not permitted.",
+        "granted_scopes": [
+          "drive.readonly"
+        ],
+        "missing_required_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "manual_review",
+        "required_scopes": [],
+        "runtime_drift_detected": false,
+        "unauthorized_path_count": 0,
+        "unknown_intents": [
+          "export quantum records"
+        ]
+      },
+      "baseline_classification": "true_positive",
+      "baseline_matches_ground_truth": true,
+      "case_id": "unknown-intent",
+      "category": "manual_review",
+      "description": "An unmapped intent cannot be automatically authorized.",
+      "expected_normalized_result": "prevented",
+      "ground_truth": {
+        "classification": "unsafe",
+        "expected_outcome": "manual_review",
+        "expected_unauthorized_path_count": 0,
+        "explanation": "Manual review must prevent automatic contract creation."
+      },
+      "scope_sentry": {
+        "available_capabilities": [
+          "list_files",
+          "read_file_contents",
+          "read_file_metadata"
+        ],
+        "composition": null,
+        "contract_created": false,
+        "excessive_scopes": [
+          "drive.readonly"
+        ],
+        "executed_scopes": [],
+        "exposure_reduction_ratio": 0.0,
+        "gateway_decisions": [],
+        "matched_scopes": [],
+        "missing_capabilities": [],
+        "missing_scopes": [],
+        "normalized_result": "prevented",
+        "operational_outcome": "manual_review",
+        "original_granted_scopes": [
+          "drive.readonly"
+        ],
+        "original_unsafe_authority_executed": false,
+        "remediation": [],
+        "removed_scopes": [],
+        "required_capabilities": [],
+        "required_scopes": [],
+        "scope_counts": {
+          "excessive": 1,
+          "matched": 0,
+          "missing": 0,
+          "original_granted": 1,
+          "removed": 0,
+          "required": 0,
+          "synthesized": 0
+        },
+        "synthesized_scopes": [],
+        "unauthorized_path_count": 0,
+        "unauthorized_paths": [],
+        "unsafe_authority_contained": true
+      },
+      "scope_sentry_classification": "true_positive",
+      "scope_sentry_matches_ground_truth": true,
+      "timing": {
+        "contract_synthesis": {
+          "maximum": 6100,
+          "median": 4800.0,
+          "minimum": 4500,
+          "p95_nearest_rank": 6100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 84900,
+          "median": 65950.0,
+          "minimum": 60600,
+          "p95_nearest_rank": 78500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 6200,
+          "median": 5200.0,
+          "minimum": 4900,
+          "p95_nearest_rank": 5800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1800,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 7000,
+          "median": 6250.0,
+          "minimum": 5900,
+          "p95_nearest_rank": 6900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    }
+  ],
+  "corpus_summary": {
+    "bias_notice": "The hand-authored corpus is intentionally threat-heavy and is not statistically representative of every OAuth deployment.",
+    "categories": {
+      "exact_least_privilege": 6,
+      "excessive_authority_without_misuse": 1,
+      "excessive_read_authority": 1,
+      "excessive_write_authority": 2,
+      "manual_review": 1,
+      "missing_permission": 2,
+      "missing_runtime_scope": 1,
+      "multiple_legitimate_intents": 1,
+      "multiple_missing_permissions": 1,
+      "runtime_capability_mismatch": 2,
+      "runtime_scope_drift": 2,
+      "safe_multi_grant_composition": 1,
+      "unauthorized_composition": 2,
+      "unknown_public_scope": 1
+    },
+    "safe_cases": 8,
+    "total_cases": 24,
+    "unsafe_cases": 16
+  },
+  "evidence": {
+    "head_hash": "48969ee90ae2743ea1d351ef108f93c330ba1a79309f301812356b87f8e437c9",
+    "normal_evidence_final_state": "present",
+    "normal_evidence_initial_state": "present",
+    "normal_evidence_unchanged": true,
+    "records_checked": 24,
+    "valid": true
+  },
+  "limitations": [
+    "The deterministic corpus is hand-authored and limited to one local mock provider catalogue.",
+    "Scope counts are an authority-exposure indicator, not a complete security measure.",
+    "Local PoC timings exclude persistence and network I/O and are not production guarantees.",
+    "The static baseline intentionally lacks runtime, synthesis, composition-path, and evidence functionality, so timing is not functionally equivalent.",
+    "This evaluation is technical evidence, not a formal security proof or legal proof of patentability."
+  ],
+  "metadata": {
+    "corpus_hash": "00c58b55801496a489bb896504fbc34c0304c605dec2ec75b93843ada3674f5b",
+    "evaluation_timestamp": "2026-10-15T13:55:42.791159+00:00",
+    "network_access_required": false,
+    "operating_system": "Windows-11-10.0.26300-SP0",
+    "provider": "local mock google-compatible catalogue",
+    "python_version": "3.12.10"
+  },
+  "metric_definitions": {
+    "exposure_reduction_ratio": "removed scopes divided by originally granted unique scopes; not applicable when the denominator is zero",
+    "false_negative": "unsafe authority incorrectly permitted",
+    "false_positive": "safe action incorrectly prevented",
+    "positive": "unsafe case",
+    "true_negative": "safe action correctly permitted",
+    "true_positive": "unsafe authority effectively contained"
+  },
+  "performance": {
+    "end_to_end_includes": [
+      "intent mapping",
+      "capability graph and exposure analysis",
+      "least-privilege synthesis",
+      "composition analysis when applicable",
+      "runtime gateway policy when applicable",
+      "evaluation normalization"
+    ],
+    "excluded_operations": [
+      "evidence I/O",
+      "report I/O",
+      "HTTP",
+      "UUID creation",
+      "temporary-file cleanup"
+    ],
+    "measured_iterations_per_applicable_case": 50,
+    "method": "time.perf_counter_ns",
+    "per_case": {
+      "drive-email-exfiltration": {
+        "composition_analysis": {
+          "maximum": 13784600,
+          "median": 11240700.0,
+          "minimum": 9868100,
+          "p95_nearest_rank": 12776200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "contract_synthesis": {
+          "maximum": 18907400,
+          "median": 11290350.0,
+          "minimum": 9820900,
+          "p95_nearest_rank": 17259600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 107154100,
+          "median": 22412900.0,
+          "minimum": 20987800,
+          "p95_nearest_rank": 35847700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4300,
+          "median": 3400.0,
+          "minimum": 3300,
+          "p95_nearest_rank": 3700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1400,
+          "median": 1000.0,
+          "minimum": 900,
+          "p95_nearest_rank": 1200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 15900,
+          "median": 6600.0,
+          "minimum": 6400,
+          "p95_nearest_rank": 7100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "excessive-calendar-no-misuse": {
+        "contract_synthesis": {
+          "maximum": 19813800,
+          "median": 15974400.0,
+          "minimum": 11934600,
+          "p95_nearest_rank": 18890800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 22155100,
+          "median": 16545750.0,
+          "minimum": 11386700,
+          "p95_nearest_rank": 20449500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 3900,
+          "median": 3200.0,
+          "minimum": 3100,
+          "p95_nearest_rank": 3500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1500,
+          "median": 900.0,
+          "minimum": 800,
+          "p95_nearest_rank": 1300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 8200,
+          "median": 6600.0,
+          "minimum": 6300,
+          "p95_nearest_rank": 7600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 37700,
+          "median": 12200.0,
+          "minimum": 11300,
+          "p95_nearest_rank": 13500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "excessive-drive-full": {
+        "contract_synthesis": {
+          "maximum": 21434900,
+          "median": 15831900.0,
+          "minimum": 9895300,
+          "p95_nearest_rank": 19310700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 49321700,
+          "median": 12893950.0,
+          "minimum": 9964000,
+          "p95_nearest_rank": 25839300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5200,
+          "median": 4500.0,
+          "minimum": 4200,
+          "p95_nearest_rank": 5100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2200,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5100,
+          "median": 4500.0,
+          "minimum": 4300,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 9300,
+          "median": 7400.0,
+          "minimum": 6800,
+          "p95_nearest_rank": 8700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "excessive-gmail-full": {
+        "contract_synthesis": {
+          "maximum": 68857200,
+          "median": 10399450.0,
+          "minimum": 8820400,
+          "p95_nearest_rank": 36445500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 18772900,
+          "median": 15024700.0,
+          "minimum": 9186300,
+          "p95_nearest_rank": 17957200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5300,
+          "median": 4400.0,
+          "minimum": 4200,
+          "p95_nearest_rank": 5000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2200,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 9700,
+          "median": 8000.0,
+          "minimum": 7400,
+          "p95_nearest_rank": 9100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 39600,
+          "median": 13300.0,
+          "minimum": 7200,
+          "p95_nearest_rank": 14900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "excessive-gmail-read": {
+        "contract_synthesis": {
+          "maximum": 18741200,
+          "median": 15707100.0,
+          "minimum": 9961000,
+          "p95_nearest_rank": 17571100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 20668800,
+          "median": 16677800.0,
+          "minimum": 10247400,
+          "p95_nearest_rank": 18137100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 6900,
+          "median": 6100.0,
+          "minimum": 5800,
+          "p95_nearest_rank": 6500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2700,
+          "median": 1900.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 2500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 7800,
+          "median": 6200.0,
+          "minimum": 6000,
+          "p95_nearest_rank": 6800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 12500,
+          "median": 10450.0,
+          "minimum": 9800,
+          "p95_nearest_rank": 12000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "known-runtime-drift": {
+        "contract_synthesis": {
+          "maximum": 88975400,
+          "median": 15136750.0,
+          "minimum": 9740400,
+          "p95_nearest_rank": 19761400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 70663400,
+          "median": 15581150.0,
+          "minimum": 10058800,
+          "p95_nearest_rank": 19738700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 17700,
+          "median": 4500.0,
+          "minimum": 4200,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2400,
+          "median": 1500.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 2000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 15900,
+          "median": 5100.0,
+          "minimum": 4800,
+          "p95_nearest_rank": 5900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 10900,
+          "median": 9400.0,
+          "minimum": 8900,
+          "p95_nearest_rank": 10500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "missing-drive-read": {
+        "contract_synthesis": {
+          "maximum": 20324400,
+          "median": 15475900.0,
+          "minimum": 10396600,
+          "p95_nearest_rank": 18453100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 20695000,
+          "median": 16058400.0,
+          "minimum": 11052500,
+          "p95_nearest_rank": 19169700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 6600,
+          "median": 5300.0,
+          "minimum": 4900,
+          "p95_nearest_rank": 6200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2800,
+          "median": 1700.0,
+          "minimum": 1600,
+          "p95_nearest_rank": 2100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11700,
+          "median": 9650.0,
+          "minimum": 9100,
+          "p95_nearest_rank": 11600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "missing-observed-contract-scope": {
+        "contract_synthesis": {
+          "maximum": 19380100,
+          "median": 14284250.0,
+          "minimum": 9383000,
+          "p95_nearest_rank": 17986900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 14805600,
+          "median": 10431250.0,
+          "minimum": 9249000,
+          "p95_nearest_rank": 13652400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5400,
+          "median": 4800.0,
+          "minimum": 4600,
+          "p95_nearest_rank": 5100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 3400,
+          "median": 2100.0,
+          "minimum": 1900,
+          "p95_nearest_rank": 2800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 37800,
+          "median": 3600.0,
+          "minimum": 3300,
+          "p95_nearest_rank": 4200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 75900,
+          "median": 9900.0,
+          "minimum": 9000,
+          "p95_nearest_rank": 16700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "multiple-exfiltration-paths": {
+        "composition_analysis": {
+          "maximum": 20430700,
+          "median": 15337650.0,
+          "minimum": 10323000,
+          "p95_nearest_rank": 18912400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "contract_synthesis": {
+          "maximum": 20139000,
+          "median": 10945650.0,
+          "minimum": 9783700,
+          "p95_nearest_rank": 14446600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 36543400,
+          "median": 31361200.0,
+          "minimum": 21164500,
+          "p95_nearest_rank": 35453500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 13900,
+          "median": 3650.0,
+          "minimum": 3400,
+          "p95_nearest_rank": 4100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1600,
+          "median": 1000.0,
+          "minimum": 900,
+          "p95_nearest_rank": 1300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11000,
+          "median": 10200.0,
+          "minimum": 9800,
+          "p95_nearest_rank": 10800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "multiple-missing-scopes": {
+        "contract_synthesis": {
+          "maximum": 18614400,
+          "median": 14440600.0,
+          "minimum": 9131400,
+          "p95_nearest_rank": 18381300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 22512200,
+          "median": 14778950.0,
+          "minimum": 9547300,
+          "p95_nearest_rank": 17994600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4900,
+          "median": 4050.0,
+          "minimum": 3800,
+          "p95_nearest_rank": 4500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2900,
+          "median": 1800.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 2300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 14400,
+          "median": 12800.0,
+          "minimum": 12100,
+          "p95_nearest_rank": 13900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "partial-calendar-authority": {
+        "contract_synthesis": {
+          "maximum": 16963700,
+          "median": 14342950.0,
+          "minimum": 12048900,
+          "p95_nearest_rank": 16192200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 17309300,
+          "median": 14365550.0,
+          "minimum": 9419100,
+          "p95_nearest_rank": 16353500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5300,
+          "median": 4400.0,
+          "minimum": 4200,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2400,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11900,
+          "median": 9900.0,
+          "minimum": 9200,
+          "p95_nearest_rank": 10900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "safe-calendar-view": {
+        "contract_synthesis": {
+          "maximum": 15965900,
+          "median": 14869000.0,
+          "minimum": 8935000,
+          "p95_nearest_rank": 15930100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 16565300,
+          "median": 15000000.0,
+          "minimum": 9009600,
+          "p95_nearest_rank": 16325800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 3400,
+          "median": 3000.0,
+          "minimum": 2800,
+          "p95_nearest_rank": 3300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1700,
+          "median": 1000.0,
+          "minimum": 900,
+          "p95_nearest_rank": 1200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 8800,
+          "median": 7450.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 8500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 7800,
+          "median": 6600.0,
+          "minimum": 6300,
+          "p95_nearest_rank": 7400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "safe-contacts-read": {
+        "contract_synthesis": {
+          "maximum": 16771900,
+          "median": 10832700.0,
+          "minimum": 7054700,
+          "p95_nearest_rank": 12926800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 16091200,
+          "median": 11850350.0,
+          "minimum": 7113700,
+          "p95_nearest_rank": 13949900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 18100,
+          "median": 4700.0,
+          "minimum": 4400,
+          "p95_nearest_rank": 5600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2300,
+          "median": 1600.0,
+          "minimum": 1500,
+          "p95_nearest_rank": 2000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 4800,
+          "median": 4100.0,
+          "minimum": 3900,
+          "p95_nearest_rank": 4500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 8000,
+          "median": 7000.0,
+          "minimum": 6600,
+          "p95_nearest_rank": 7800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "safe-drive-read": {
+        "contract_synthesis": {
+          "maximum": 18991200,
+          "median": 15561800.0,
+          "minimum": 10067800,
+          "p95_nearest_rank": 17626200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 20540100,
+          "median": 16788050.0,
+          "minimum": 10575200,
+          "p95_nearest_rank": 19691900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5100,
+          "median": 4600.0,
+          "minimum": 4400,
+          "p95_nearest_rank": 5000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 13200,
+          "median": 1600.0,
+          "minimum": 1500,
+          "p95_nearest_rank": 2500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 7600,
+          "median": 6300.0,
+          "minimum": 6100,
+          "p95_nearest_rank": 7000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 28600,
+          "median": 10300.0,
+          "minimum": 9500,
+          "p95_nearest_rank": 11800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "safe-file-upload": {
+        "contract_synthesis": {
+          "maximum": 32223300,
+          "median": 13610200.0,
+          "minimum": 8821300,
+          "p95_nearest_rank": 18812800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 21300500,
+          "median": 15029050.0,
+          "minimum": 9451400,
+          "p95_nearest_rank": 17363200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 30600,
+          "median": 4800.0,
+          "minimum": 4500,
+          "p95_nearest_rank": 5700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2600,
+          "median": 1600.0,
+          "minimum": 1500,
+          "p95_nearest_rank": 2200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5000,
+          "median": 4400.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 5000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 7700,
+          "median": 6500.0,
+          "minimum": 6100,
+          "p95_nearest_rank": 7200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "safe-gmail-send": {
+        "contract_synthesis": {
+          "maximum": 18881300,
+          "median": 15155500.0,
+          "minimum": 9334200,
+          "p95_nearest_rank": 18518700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 19616800,
+          "median": 15768400.0,
+          "minimum": 10056200,
+          "p95_nearest_rank": 18181900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4500,
+          "median": 4200.0,
+          "minimum": 4000,
+          "p95_nearest_rank": 4400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2100,
+          "median": 1400.0,
+          "minimum": 1200,
+          "p95_nearest_rank": 1600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 4800,
+          "median": 3900.0,
+          "minimum": 3800,
+          "p95_nearest_rank": 4300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 16300,
+          "median": 6500.0,
+          "minimum": 6100,
+          "p95_nearest_rank": 7300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "safe-multi-grant": {
+        "composition_analysis": {
+          "maximum": 17101800,
+          "median": 13118700.0,
+          "minimum": 9221100,
+          "p95_nearest_rank": 16149600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "contract_synthesis": {
+          "maximum": 18515700,
+          "median": 14799000.0,
+          "minimum": 9170000,
+          "p95_nearest_rank": 17049700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 39075200,
+          "median": 30128750.0,
+          "minimum": 20260800,
+          "p95_nearest_rank": 36375900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4600,
+          "median": 4300.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 4600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2900,
+          "median": 1900.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 2300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5200,
+          "median": 4500.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 39900,
+          "median": 14700.0,
+          "minimum": 13500,
+          "p95_nearest_rank": 19000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "safe-multiple-actions": {
+        "contract_synthesis": {
+          "maximum": 18196100,
+          "median": 14718850.0,
+          "minimum": 9125500,
+          "p95_nearest_rank": 17409500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 17885900,
+          "median": 12230700.0,
+          "minimum": 9328000,
+          "p95_nearest_rank": 17210700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 5700,
+          "median": 4300.0,
+          "minimum": 4100,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2600,
+          "median": 1900.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 2500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 6500,
+          "median": 5800.0,
+          "minimum": 5600,
+          "p95_nearest_rank": 6200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 12600,
+          "median": 11700.0,
+          "minimum": 11200,
+          "p95_nearest_rank": 12400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "safe-profile-read": {
+        "contract_synthesis": {
+          "maximum": 13865300,
+          "median": 11160700.0,
+          "minimum": 7171700,
+          "p95_nearest_rank": 13140200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 15171700,
+          "median": 11709350.0,
+          "minimum": 8653900,
+          "p95_nearest_rank": 14446600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4900,
+          "median": 3900.0,
+          "minimum": 3700,
+          "p95_nearest_rank": 4200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1900,
+          "median": 1400.0,
+          "minimum": 1200,
+          "p95_nearest_rank": 1700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 7700,
+          "median": 6500.0,
+          "minimum": 6200,
+          "p95_nearest_rank": 7300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 10800,
+          "median": 9800.0,
+          "minimum": 9300,
+          "p95_nearest_rank": 10300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "unauthorized-email-read": {
+        "contract_synthesis": {
+          "maximum": 21390700,
+          "median": 15775950.0,
+          "minimum": 9713800,
+          "p95_nearest_rank": 18847000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 18415800,
+          "median": 15861850.0,
+          "minimum": 9981400,
+          "p95_nearest_rank": 17826100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 6000,
+          "median": 4150.0,
+          "minimum": 3900,
+          "p95_nearest_rank": 4800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2200,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5200,
+          "median": 4600.0,
+          "minimum": 4400,
+          "p95_nearest_rank": 5100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 9500,
+          "median": 8200.0,
+          "minimum": 7800,
+          "p95_nearest_rank": 9100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "unauthorized-email-send": {
+        "contract_synthesis": {
+          "maximum": 18530400,
+          "median": 15424850.0,
+          "minimum": 10047000,
+          "p95_nearest_rank": 18435200,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 29483800,
+          "median": 16291400.0,
+          "minimum": 10097900,
+          "p95_nearest_rank": 19715100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4500,
+          "median": 4200.0,
+          "minimum": 4000,
+          "p95_nearest_rank": 4300,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 2000,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 5800,
+          "median": 5000.0,
+          "minimum": 4700,
+          "p95_nearest_rank": 5400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11600,
+          "median": 9600.0,
+          "minimum": 9000,
+          "p95_nearest_rank": 10900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "unknown-extra-scope": {
+        "contract_synthesis": {
+          "maximum": 18718900,
+          "median": 16409100.0,
+          "minimum": 10883900,
+          "p95_nearest_rank": 18142100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 23998600,
+          "median": 15496700.0,
+          "minimum": 10669800,
+          "p95_nearest_rank": 18434600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 11800,
+          "median": 6000.0,
+          "minimum": 5700,
+          "p95_nearest_rank": 7000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 5600,
+          "median": 1900.0,
+          "minimum": 1700,
+          "p95_nearest_rank": 3000,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 7500,
+          "median": 6200.0,
+          "minimum": 5800,
+          "p95_nearest_rank": 7100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 22700,
+          "median": 9600.0,
+          "minimum": 8800,
+          "p95_nearest_rank": 10800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "unknown-intent": {
+        "contract_synthesis": {
+          "maximum": 6100,
+          "median": 4800.0,
+          "minimum": 4500,
+          "p95_nearest_rank": 6100,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 84900,
+          "median": 65950.0,
+          "minimum": 60600,
+          "p95_nearest_rank": 78500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 6200,
+          "median": 5200.0,
+          "minimum": 4900,
+          "p95_nearest_rank": 5800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1800,
+          "median": 1400.0,
+          "minimum": 1300,
+          "p95_nearest_rank": 1700,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 7000,
+          "median": 6250.0,
+          "minimum": 5900,
+          "p95_nearest_rank": 6900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      },
+      "unknown-runtime-drift": {
+        "contract_synthesis": {
+          "maximum": 20001800,
+          "median": 15688400.0,
+          "minimum": 11179600,
+          "p95_nearest_rank": 19285500,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "end_to_end_scope_sentry": {
+          "maximum": 21164400,
+          "median": 16593400.0,
+          "minimum": 11611600,
+          "p95_nearest_rank": 18719900,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "exposure_calculation": {
+          "maximum": 4000,
+          "median": 3400.0,
+          "minimum": 3200,
+          "p95_nearest_rank": 3800,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "intent_analysis": {
+          "maximum": 1900,
+          "median": 1200.0,
+          "minimum": 1000,
+          "p95_nearest_rank": 1600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "runtime_gateway_decision": {
+          "maximum": 6000,
+          "median": 5000.0,
+          "minimum": 4800,
+          "p95_nearest_rank": 5600,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        },
+        "static_baseline": {
+          "maximum": 11200,
+          "median": 9300.0,
+          "minimum": 8900,
+          "p95_nearest_rank": 10400,
+          "sample_count": 50,
+          "unit": "nanoseconds"
+        }
+      }
+    },
+    "stages": {
+      "composition_analysis": {
+        "maximum": 20430700,
+        "median": 12221550.0,
+        "minimum": 9221100,
+        "p95_nearest_rank": 17164800,
+        "sample_count": 150,
+        "unit": "nanoseconds"
+      },
+      "contract_synthesis": {
+        "maximum": 88975400,
+        "median": 14470850.0,
+        "minimum": 4500,
+        "p95_nearest_rank": 18142100,
+        "sample_count": 1200,
+        "unit": "nanoseconds"
+      },
+      "end_to_end_scope_sentry": {
+        "maximum": 107154100,
+        "median": 15523850.0,
+        "minimum": 60600,
+        "p95_nearest_rank": 29928200,
+        "sample_count": 1200,
+        "unit": "nanoseconds"
+      },
+      "exposure_calculation": {
+        "maximum": 30600,
+        "median": 4400.0,
+        "minimum": 2800,
+        "p95_nearest_rank": 6100,
+        "sample_count": 1200,
+        "unit": "nanoseconds"
+      },
+      "intent_analysis": {
+        "maximum": 13200,
+        "median": 1500.0,
+        "minimum": 800,
+        "p95_nearest_rank": 2200,
+        "sample_count": 1200,
+        "unit": "nanoseconds"
+      },
+      "runtime_gateway_decision": {
+        "maximum": 37800,
+        "median": 5000.0,
+        "minimum": 3300,
+        "p95_nearest_rank": 7900,
+        "sample_count": 900,
+        "unit": "nanoseconds"
+      },
+      "static_baseline": {
+        "maximum": 75900,
+        "median": 9600.0,
+        "minimum": 5900,
+        "p95_nearest_rank": 14200,
+        "sample_count": 1200,
+        "unit": "nanoseconds"
+      }
+    },
+    "unit": "nanoseconds",
+    "warmups_excluded": true,
+    "warmups_per_applicable_case": 5
+  },
+  "reproduction_command": "python -m app.evaluation.runner --iterations 50 --warmups 5 --output-dir reports\\evaluation",
+  "schema_version": "1.0.0"
+}
