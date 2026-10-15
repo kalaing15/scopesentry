@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="ScopeSentry-R local explainable security dashboard">
+  <title>ScopeSentry-R Security Dashboard</title>
+  <link rel="stylesheet" href="/demo-assets/styles.css">
+  <script src="/demo-assets/dashboard.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to dashboard content</a>
+
+  <header class="site-header">
+    <div class="header-copy">
+      <p class="eyebrow">Explainable security demonstration</p>
+      <h1>ScopeSentry-R</h1>
+      <p class="subtitle">Intent-Locked OAuth Capability Security</p>
+    </div>
+    <div class="system-indicators" aria-label="System status">
+      <span class="indicator pending" id="health-indicator">
+        <span class="indicator-dot" aria-hidden="true"></span>
+        Backend: checking
+      </span>
+      <span class="indicator pending" id="provider-indicator">
+        <span class="indicator-dot" aria-hidden="true"></span>
+        Provider: checking
+      </span>
+    </div>
+  </header>
+
+  <div class="mock-notice" role="note">
+    <strong>Credential-free local simulation.</strong>
+    This dashboard uses only deterministic mock data. It does not hold OAuth
+    credentials or contact Google or any external provider.
+  </div>
+
+  <main id="main-content">
+    <section class="workflow-section" aria-labelledby="workflow-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Security workflow</p>
+          <h2 id="workflow-title">From declared intent to verifiable evidence</h2>
+        </div>
+      </div>
+      <ol class="workflow" aria-label="ScopeSentry-R workflow">
+        <li>User Intent</li>
+        <li>Granted OAuth Scopes</li>
+        <li>Required Capabilities</li>
+        <li>Exposure Differential</li>
+        <li>Least-Privilege Contract</li>
+        <li>Runtime Monitoring</li>
+        <li>Security Decision</li>
+        <li>Tamper-Evident Evidence</li>
+      </ol>
+    </section>
+
+    <section class="overview-section" aria-labelledby="overview-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Live session</p>
+          <h2 id="overview-title">Overview</h2>
+        </div>
+        <button class="primary-button" id="run-all-button" type="button" disabled>
+          Run All Scenarios
+        </button>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card">
+          <span class="stat-label">Scenarios</span>
+          <strong class="stat-value" id="scenario-count">0</strong>
+          <span class="stat-note">Loaded from backend</span>
+        </article>
+        <article class="stat-card safe">
+          <span class="stat-label">Allowed</span>
+          <strong class="stat-value" id="allow-count">0</strong>
+          <span class="stat-note">Executed results</span>
+        </article>
+        <article class="stat-card danger">
+          <span class="stat-label">Blocked / quarantined</span>
+          <strong class="stat-value" id="restricted-count">0</strong>
+          <span class="stat-note">Executed results</span>
+        </article>
+        <article class="stat-card warning">
+          <span class="stat-label">Missing permission</span>
+          <strong class="stat-value" id="missing-count">0</strong>
+          <span class="stat-note">Executed results</span>
+        </article>
+        <article class="stat-card danger">
+          <span class="stat-label">Execution errors</span>
+          <strong class="stat-value" id="failed-count">0</strong>
+          <span class="stat-note">Never treated as allowed</span>
+        </article>
+        <article class="stat-card" id="evidence-stat-card">
+          <span class="stat-label">Evidence chain</span>
+          <strong class="stat-value text-value" id="evidence-overview">Pending</strong>
+          <span class="stat-note" id="evidence-record-count">Not checked</span>
+        </article>
+      </div>
+      <p class="progress-message" id="run-progress" aria-live="polite">Scenarios have not been executed.</p>
+    </section>
+
+    <section class="scenario-section" aria-labelledby="scenarios-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Deterministic demonstrations</p>
+          <h2 id="scenarios-title">Scenario catalogue</h2>
+        </div>
+      </div>
+      <div class="error-banner" id="global-error" role="alert" aria-live="assertive" hidden></div>
+      <div class="scenario-grid" id="scenario-grid" aria-live="polite"></div>
+    </section>
+
+    <section class="result-section" id="result-section" aria-labelledby="result-title" hidden>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Backend result</p>
+          <h2 id="result-title">Scenario analysis</h2>
+        </div>
+        <span class="decision-badge neutral" id="result-decision">Not executed</span>
+      </div>
+      <div id="result-content"></div>
+    </section>
+
+    <section class="evidence-section" aria-labelledby="evidence-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">Audit integrity</p>
+          <h2 id="evidence-title">Tamper-evident evidence</h2>
+        </div>
+        <button class="secondary-button" id="refresh-evidence-button" type="button">
+          Refresh Evidence
+        </button>
+      </div>
+      <div class="evidence-summary" id="evidence-summary" aria-live="polite">
+        Evidence verification has not completed.
+      </div>
+      <ol class="evidence-list" id="evidence-list"></ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>ScopeSentry-R local proof of concept · Mock provider only · No real credentials</p>
+  </footer>
+</body>
+</html>
