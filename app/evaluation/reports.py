@@ -135,7 +135,9 @@ def _markdown_content(report: dict[str, Any]) -> str:
         "",
         "## Executive summary",
         "",
-        f"This local, deterministic corpus contains {report['corpus_summary']['total_cases']} cases: 8 safe and 16 unsafe. It is intentionally threat-heavy and is not statistically representative of every OAuth deployment.",
+        f"This local, deterministic corpus contains {report['corpus_summary']['total_cases']} cases: "
+        f"{report['corpus_summary']['safe_cases']} safe and {report['corpus_summary']['unsafe_cases']} unsafe. "
+        "It is intentionally threat-heavy and is not statistically representative of every OAuth deployment.",
         "",
         f"ScopeSentry-R unsafe-case prevention: **{_rate_text(scope_sentry['unsafe_case_prevention_rate'])}**. Static baseline unsafe-case prevention: **{_rate_text(baseline['unsafe_case_prevention_rate'])}**.",
         "",
@@ -214,12 +216,18 @@ def _markdown_content(report: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def write_reports(report: dict[str, Any], output_dir: Path | str) -> dict[str, str]:
+def write_reports(
+    report: dict[str, Any],
+    output_dir: Path | str,
+    *,
+    filename_suffix: str = "",
+) -> dict[str, str]:
+    """Atomically write reports; the empty suffix preserves Phase 4 filenames."""
     directory = Path(output_dir)
     paths = {
-        "json": directory / "scope_sentry_evaluation.json",
-        "csv": directory / "scope_sentry_evaluation.csv",
-        "markdown": directory / "scope_sentry_evaluation.md",
+        "json": directory / f"scope_sentry_evaluation{filename_suffix}.json",
+        "csv": directory / f"scope_sentry_evaluation{filename_suffix}.csv",
+        "markdown": directory / f"scope_sentry_evaluation{filename_suffix}.md",
     }
     _atomic_write(paths["json"], json.dumps(report, ensure_ascii=False, indent=2, sort_keys=True) + "\n")
     _atomic_write(paths["csv"], _csv_content(report))

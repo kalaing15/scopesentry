@@ -81,6 +81,29 @@ footer {
   margin-inline: auto;
 }
 
+.provider-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.55rem 0;
+}
+
+.provider-badge {
+  border: 1px solid #6d77a8;
+  border-radius: 999px;
+  background: #262d50;
+  color: #eef0ff;
+  padding: 0.2rem 0.55rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+}
+
+.cross-provider-warning {
+  grid-column: 1 / -1;
+  color: #ffd18a;
+  font-weight: 700;
+}
+
 .site-header {
   display: flex;
   align-items: flex-end;

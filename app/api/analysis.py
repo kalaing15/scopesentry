@@ -33,7 +33,7 @@ def analyze_scopes(
         ) from exc
     evidence_reference = evidence_service.create_record(
         analysis_type="single_grant",
-        request=request,
+        request={**request.model_dump(mode="json"), "provider": result["provider"]},
         result=result,
         decision_summary=result["recommendation"],
     )

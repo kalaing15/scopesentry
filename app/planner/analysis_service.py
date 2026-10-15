@@ -10,7 +10,7 @@ from app.planner.capability_graph import (
 from app.planner.exposure_engine import calculate_exposure_differential
 from app.planner.intent_mapper import map_intents_to_scopes
 from app.planner.least_privilege_synthesizer import synthesize_least_privilege
-from app.providers.mock.catalog import SUPPORTED_PROVIDERS
+from app.providers.mock.catalog import resolve_authority_provider_id
 
 
 class UnsupportedAnalysisProviderError(ValueError):
@@ -24,16 +24,16 @@ def analyze_scope_grant(
     intended_actions: Iterable[str],
 ) -> Dict[str, Any]:
     """Run the complete deterministic analysis pipeline without HTTP."""
-    provider_key = provider.strip().lower()
-    if provider_key not in SUPPORTED_PROVIDERS:
+    try:
+        provider_key = resolve_authority_provider_id(provider)
+    except ValueError as exc:
         raise UnsupportedAnalysisProviderError(
-            f"Unsupported provider '{provider}'. "
-            f"Supported providers: {sorted(SUPPORTED_PROVIDERS)}"
-        )
+            str(exc)
+        ) from exc
 
     normalized_grants = normalize_scopes(granted_scopes)
     actions: List[str] = list(intended_actions)
-    required_scopes, unknown_intents = map_intents_to_scopes(actions)
+    required_scopes, unknown_intents = map_intents_to_scopes(actions, provider_key)
     graph, capability_analysis = build_capability_graph(
         provider=provider_key,
         granted_scopes=normalized_grants,

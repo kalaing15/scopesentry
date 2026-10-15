@@ -4,7 +4,7 @@ from fastapi import APIRouter, Depends, HTTPException
 
 from app.evidence.service import EvidenceService, get_evidence_service
 from app.planner.composition_engine import analyze_composition
-from app.providers.mock.catalog import SUPPORTED_PROVIDERS
+from app.providers.mock.catalog import resolve_authority_provider_id
 from app.schemas.composition import (
     CompositionAnalysisRequest,
     CompositionAnalysisResponse,
@@ -26,15 +26,13 @@ def analyze_grant_composition(
     evidence_service: EvidenceService = Depends(get_evidence_service),
 ) -> CompositionAnalysisResponse:
     """Analyze the combined authority exposed by multiple OAuth grants."""
-    provider = request.provider.strip().lower()
-    if provider not in SUPPORTED_PROVIDERS:
+    try:
+        provider = resolve_authority_provider_id(request.provider)
+    except ValueError as exc:
         raise HTTPException(
             status_code=400,
-            detail=(
-                f"Unsupported provider '{request.provider}'. "
-                f"Supported providers: {sorted(SUPPORTED_PROVIDERS)}"
-            ),
-        )
+            detail=str(exc),
+        ) from exc
 
     try:
         result = analyze_composition(
@@ -47,7 +45,7 @@ def analyze_grant_composition(
 
     evidence_reference = evidence_service.create_record(
         analysis_type="composition",
-        request=request,
+        request={**request.model_dump(mode="json"), "provider": provider},
         result=result,
         decision_summary=result["recommendation"],
     )

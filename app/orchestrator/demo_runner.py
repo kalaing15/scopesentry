@@ -7,12 +7,19 @@ from app.gateway.repository import ContractRepository
 from app.gateway.service import create_contract, evaluate_runtime_action
 from app.planner.analysis_service import analyze_scope_grant
 from app.planner.composition_engine import analyze_composition
+from app.planner.cross_provider_composition import (
+    analyze_provider_qualified_composition,
+)
 from app.planner.intent_mapper import map_intents_to_scopes
 from app.providers.registry import ProviderRegistry
-from app.providers.mock.scenarios import get_scenario
+from app.providers.scenario_registry import get_grant, get_scenario
 from app.schemas.demo import DemoRunResponse, DemoTimelineEntry, TimelineStatus
 from app.schemas.gateway import ContractCreateRequest, GatewayEvaluationRequest
-from app.schemas.provider import DemoScenarioDefinition, MockGrant
+from app.schemas.provider import (
+    DemoScenarioDefinition,
+    MockGrant,
+    ProviderIntentAssignment,
+)
 
 
 class ScenarioNotFoundError(LookupError):
@@ -43,35 +50,19 @@ def _detect_unauthorized_paths(
     adapter,
     required_capabilities: List[str],
 ) -> List[Dict[str, Any]]:
-    capabilities = {
-        grant.grant_id: set(adapter.resolve_scopes(grant.granted_scopes))
-        for grant in grants
-    }
-    required = set(required_capabilities)
-    paths: List[Dict[str, Any]] = []
-    for link in scenario.data_flow_links:
-        source_caps = capabilities.get(link.source_grant_id, set())
-        target_caps = capabilities.get(link.target_grant_id, set())
-        if (
-            "read_file_contents" in source_caps
-            and "send_email_messages" in target_caps
-            and "send_email_messages" not in required
-        ):
-            paths.append(
-                {
-                    "source_grant_id": link.source_grant_id,
-                    "source_capability": "read_file_contents",
-                    "target_grant_id": link.target_grant_id,
-                    "target_capability": "send_email_messages",
-                    "data_type": link.data_type,
-                    "authorized_by_intent": False,
-                    "remediation": (
-                        "Break the data-flow link or remove the unnecessary "
-                        "email-sending scope from the target grant."
-                    ),
-                }
-            )
-    return paths
+    assignments = scenario.provider_intents or [
+        ProviderIntentAssignment(
+            provider=grants[0].authority_provider or grants[0].provider,
+            intended_actions=scenario.intended_actions,
+        )
+    ]
+    result = analyze_provider_qualified_composition(
+        grants=grants,
+        provider_intents=assignments,
+        observed_links=scenario.data_flow_links,
+        authorized_flows=scenario.authorized_flows,
+    )
+    return result["unauthorized_paths"]
 
 
 def _evaluate_expectations(
@@ -126,6 +117,8 @@ class DemoRunner:
         scenario = get_scenario(scenario_id)
         if scenario is None:
             raise ScenarioNotFoundError(scenario_id)
+        if len(scenario.providers) > 1:
+            return self._run_multi_provider(scenario)
         adapter = self.registry.get(scenario.provider)
         metadata = adapter.get_metadata()
         grants = [adapter.get_grant(grant_id) for grant_id in scenario.grant_ids]
@@ -149,7 +142,8 @@ class DemoRunner:
         )
 
         required_scopes, unknown_intents = map_intents_to_scopes(
-            scenario.intended_actions
+            scenario.intended_actions,
+            metadata.catalog_provider,
         )
         timeline.append(
             _timeline_entry(
@@ -299,8 +293,8 @@ class DemoRunner:
                     "composition_analysis",
                     "risk_detected" if unauthorized_paths else "completed",
                     (
-                        "Detected a Drive-read-to-email-send path outside "
-                        "the declared intent."
+                        "Detected an observed capability path outside the "
+                        "intent-authorized flow policy."
                         if unauthorized_paths
                         else composition["recommendation"]
                     ),
@@ -342,6 +336,8 @@ class DemoRunner:
             contract = create_contract(
                 ContractCreateRequest(
                     provider=metadata.catalog_provider,
+                    principal_id=grants[0].principal_id,
+                    source_grant_ids=[grant.grant_id for grant in grants],
                     granted_scopes=combined_scopes,
                     intended_actions=scenario.intended_actions,
                     ttl_seconds=3600,
@@ -382,6 +378,9 @@ class DemoRunner:
         gateway_decisions: List[Dict[str, Any]] = []
         if contract and scenario.runtime_attempts:
             for attempt in scenario.runtime_attempts:
+                attempt_grant = next(
+                    item for item in grants if item.grant_id == attempt.grant_id
+                )
                 provider_result = adapter.simulate_capability_attempt(
                     attempt.grant_id,
                     attempt.capability,
@@ -394,6 +393,9 @@ class DemoRunner:
                             attempt.grant_id
                         ),
                         resource_reference=attempt.resource_reference,
+                        provider=attempt_grant.authority_provider,
+                        principal_id=attempt_grant.principal_id,
+                        grant_id=attempt_grant.grant_id,
                     ),
                     repository=self.repository,
                     evidence_service=self.evidence_service,
@@ -516,4 +518,378 @@ class DemoRunner:
             contract_summary=contract_summary,
             gateway_decisions=gateway_decisions,
             evidence_chain_valid=verification.valid,
+            providers=scenario.providers,
+            provider_intents=scenario.provider_intents,
+        )
+
+    def _run_multi_provider(
+        self, scenario: DemoScenarioDefinition
+    ) -> DemoRunResponse:
+        """Run provider-qualified scenarios using isolated per-grant contracts."""
+        grants = [get_grant(grant_id) for grant_id in scenario.grant_ids]
+        timeline: List[DemoTimelineEntry] = [
+            _timeline_entry(
+                1,
+                "mock_grant_discovery",
+                "completed",
+                f"Discovered {len(grants)} provider-qualified synthetic grants.",
+                {
+                    "providers": scenario.providers,
+                    "grants": [
+                        {
+                            "provider": grant.authority_provider,
+                            "principal_id": grant.principal_id,
+                            "grant_id": grant.grant_id,
+                        }
+                        for grant in grants
+                    ],
+                },
+            )
+        ]
+        analyses: Dict[tuple[str, str], Dict[str, Any]] = {}
+        boundaries: List[tuple[ProviderIntentAssignment, tuple[str, str], List[MockGrant]]] = []
+        for assignment in scenario.provider_intents:
+            candidates = [
+                grant
+                for grant in grants
+                if grant.authority_provider == assignment.provider
+                and (
+                    assignment.principal_id is None
+                    or grant.principal_id == assignment.principal_id
+                )
+            ]
+            principals = {grant.principal_id for grant in candidates}
+            if assignment.principal_id is not None:
+                principal_id = assignment.principal_id
+            elif len(principals) == 1:
+                principal_id = next(iter(principals))
+            else:
+                raise ValueError(
+                    "A provider-intent assignment must resolve to exactly one provider/principal boundary"
+                )
+            provider_grants = [grant for grant in candidates if grant.principal_id == principal_id]
+            key = (assignment.provider, principal_id)
+            if key in analyses:
+                raise ValueError(f"Duplicate provider-intent boundary {key}")
+            scopes = sorted(
+                {scope for grant in provider_grants for scope in grant.granted_scopes}
+            )
+            analyses[key] = analyze_scope_grant(
+                provider=assignment.provider,
+                granted_scopes=scopes,
+                intended_actions=assignment.intended_actions,
+            )
+            boundaries.append((assignment, key, provider_grants))
+        primary_provider, primary_principal = boundaries[0][1]
+        primary = analyses[(primary_provider, primary_principal)]
+        provider_analysis_items = [
+            {
+                "provider": provider,
+                "principal_id": principal,
+                "analysis": analyses[(provider, principal)],
+            }
+            for provider, principal in sorted(analyses)
+        ]
+        timeline.append(
+            _timeline_entry(
+                2,
+                "intent_extraction",
+                "manual_review"
+                if any(item["unknown_intents"] for item in analyses.values())
+                else "completed",
+                "Mapped each intended action only within its canonical provider namespace.",
+                {
+                    "provider_intents": [
+                        item.model_dump(mode="json")
+                        for item in scenario.provider_intents
+                    ]
+                },
+            )
+        )
+        analysis_evidence = self.evidence_service.create_record(
+            analysis_type="composition",
+            request={
+                "scenario_id": scenario.scenario_id,
+                "providers": scenario.providers,
+                "grants": [grant.model_dump(mode="json") for grant in grants],
+                "provider_intents": [
+                    item.model_dump(mode="json") for item in scenario.provider_intents
+                ],
+            },
+            result={"provider_analyses": provider_analysis_items},
+            decision_summary="Completed provider-isolated scope analyses.",
+        )
+        timeline.extend(
+            [
+                _timeline_entry(
+                    3,
+                    "scope_analysis",
+                    primary["least_privilege_plan"]["status"],
+                    "Analyzed each provider boundary independently.",
+                    {"provider_analyses": provider_analysis_items},
+                    analysis_evidence,
+                ),
+                _timeline_entry(
+                    4,
+                    "capability_graph_construction",
+                    "completed",
+                    "Constructed provider-qualified capability provenance.",
+                    {
+                        "providers": scenario.providers,
+                        "required_capabilities": [
+                            {
+                                "provider": item["provider"],
+                                "principal_id": item["principal_id"],
+                                "capabilities": item["analysis"]["required_capabilities"],
+                            }
+                            for item in provider_analysis_items
+                        ],
+                    },
+                ),
+                _timeline_entry(
+                    5,
+                    "exposure_differential",
+                    "completed",
+                    "Calculated exposure separately within each provider.",
+                    {
+                        "excessive_scopes": [
+                            {
+                                "provider": item["provider"],
+                                "principal_id": item["principal_id"],
+                                "scopes": item["analysis"]["excessive_scopes"],
+                            }
+                            for item in provider_analysis_items
+                        ]
+                    },
+                ),
+                _timeline_entry(
+                    6,
+                    "least_privilege_synthesis",
+                    "complete"
+                    if all(value["least_privilege_plan"]["status"] == "complete" for value in analyses.values())
+                    else "incomplete",
+                    "Synthesized isolated provider-specific scope plans.",
+                    {
+                        "selected_scopes": [
+                            {
+                                "provider": item["provider"],
+                                "principal_id": item["principal_id"],
+                                "scopes": item["analysis"]["least_privilege_plan"]["selected_scopes"],
+                            }
+                            for item in provider_analysis_items
+                        ]
+                    },
+                ),
+            ]
+        )
+        composition = analyze_provider_qualified_composition(
+            grants=grants,
+            provider_intents=scenario.provider_intents,
+            observed_links=scenario.data_flow_links,
+            authorized_flows=scenario.authorized_flows,
+        )
+        unauthorized_paths = composition["unauthorized_paths"]
+        composition_evidence = self.evidence_service.create_record(
+            analysis_type="composition",
+            request={
+                "scenario_id": scenario.scenario_id,
+                "observed_links": [item.model_dump(mode="json") for item in scenario.data_flow_links],
+                "authorized_flows": [item.model_dump(mode="json") for item in scenario.authorized_flows],
+            },
+            result=composition,
+            decision_summary=(
+                "Detected provider-qualified unauthorized observed flow."
+                if unauthorized_paths
+                else "Every observed flow matched an exact flow authorization."
+            ),
+        )
+        timeline.append(
+            _timeline_entry(
+                7,
+                "composition_analysis",
+                "risk_detected" if unauthorized_paths else "completed",
+                "Compared observed flows with exact intent-authorized flow contracts.",
+                {
+                    "unauthorized_path_count": len(unauthorized_paths),
+                    "cross_provider": any(item["cross_provider"] for item in composition["observed_paths"]),
+                },
+                composition_evidence,
+            )
+        )
+
+        contracts: Dict[tuple[str, str, str], Any] = {}
+        if not unauthorized_paths:
+            for assignment, key, provider_grants in boundaries:
+                analysis = analyses[key]
+                plan = analysis["least_privilege_plan"]
+                if (
+                    len(provider_grants) == 1
+                    and not analysis["unknown_intents"]
+                    and not analysis["missing_capabilities"]
+                    and not plan["scopes_to_add"]
+                    and plan["status"] == "complete"
+                ):
+                    grant = provider_grants[0]
+                    contract = create_contract(
+                        ContractCreateRequest(
+                            provider=assignment.provider,
+                            principal_id=grant.principal_id,
+                            source_grant_ids=[grant.grant_id],
+                            granted_scopes=grant.granted_scopes,
+                            intended_actions=assignment.intended_actions,
+                            ttl_seconds=3600,
+                        ),
+                        repository=self.repository,
+                        evidence_service=self.evidence_service,
+                    )
+                    contracts[(
+                        grant.authority_provider or grant.provider,
+                        grant.principal_id,
+                        grant.grant_id,
+                    )] = contract
+        timeline.append(
+            _timeline_entry(
+                8,
+                "contract_creation",
+                "completed" if contracts else "skipped",
+                (
+                    f"Created {len(contracts)} isolated provider/grant contract(s)."
+                    if contracts
+                    else "No executable contract was created across provider boundaries."
+                ),
+                {
+                    "global_cross_provider_contract_created": False,
+                    "contract_bindings": [
+                        {
+                            "provider": value.provider,
+                            "principal_id": value.principal_id,
+                            "source_grant_ids": value.source_grant_ids,
+                        }
+                        for value in contracts.values()
+                    ],
+                },
+            )
+        )
+        gateway_decisions: List[Dict[str, Any]] = []
+        if contracts and scenario.runtime_attempts:
+            for attempt in scenario.runtime_attempts:
+                grant = get_grant(attempt.grant_id)
+                contract = contracts.get((
+                    grant.authority_provider or grant.provider,
+                    grant.principal_id,
+                    grant.grant_id,
+                ))
+                if contract is None:
+                    continue
+                adapter = self.registry.get(grant.provider)
+                decision = evaluate_runtime_action(
+                    GatewayEvaluationRequest(
+                        contract_id=contract.contract_id,
+                        attempted_capability=attempt.capability,
+                        observed_scopes=adapter.get_observed_scopes(grant.grant_id),
+                        resource_reference=attempt.resource_reference,
+                        provider=grant.authority_provider,
+                        principal_id=grant.principal_id,
+                        grant_id=grant.grant_id,
+                    ),
+                    repository=self.repository,
+                    evidence_service=self.evidence_service,
+                )
+                gateway_decisions.append(decision.model_dump(mode="json"))
+        timeline.append(
+            _timeline_entry(
+                9,
+                "runtime_action_evaluation",
+                "completed" if gateway_decisions else "skipped",
+                "Evaluated runtime actions only against their stored provider/grant contracts.",
+                {
+                    "decisions": [item["decision"] for item in gateway_decisions],
+                    "reason_codes": [item["reason_code"] for item in gateway_decisions],
+                },
+            )
+        )
+        actual = {
+            "result": "evaluated",
+            "excessive_scopes": primary["excessive_scopes"],
+            "missing_scopes": primary["missing_scopes"],
+            "selected_scopes": primary["least_privilege_plan"]["selected_scopes"],
+            "scopes_to_add": primary["least_privilege_plan"]["scopes_to_add"],
+            "gateway_decisions": [item["decision"] for item in gateway_decisions],
+            "contract_state": (
+                "active" if contracts and all(self.repository.get(value.contract_id).state == "active" for value in contracts.values()) else None
+            ),
+            "unauthorized_path_count": len(unauthorized_paths),
+        }
+        passed = _evaluate_expectations(scenario, actual)
+        actual["result"] = "expected_security_outcome_observed" if passed else "expected_security_outcome_not_observed"
+        completion = self.evidence_service.create_record(
+            analysis_type="demo_completion",
+            request={"scenario_id": scenario.scenario_id, "providers": scenario.providers},
+            result={"actual_result": actual, "passed": passed},
+            decision_summary=f"Multi-provider demo {scenario.scenario_id} {'passed' if passed else 'failed'}.",
+        )
+        verification = self.evidence_service.verify()
+        timeline.append(
+            _timeline_entry(
+                10,
+                "evidence_chain_verification",
+                "completed" if verification.valid else "failed",
+                verification.message,
+                {"records_checked": verification.records_checked, "head_hash": verification.head_hash},
+                completion,
+            )
+        )
+        qualified_capabilities = [
+            {
+                "provider": node["provider"],
+                "principal_id": node["principal_id"],
+                "grant_id": node["grant_id"],
+                "scope": node["scope"],
+                "capability": node["capability"],
+            }
+            for node in composition["composition_graph"]["nodes"]
+            if node["node_type"] == "capability"
+        ]
+        summary = {
+            "provider": scenario.provider,
+            "catalog_provider": primary_provider,
+            "granted_scopes": primary["granted_scopes"],
+            "required_scopes": primary["required_scopes"],
+            "matched_scopes": primary["matched_scopes"],
+            "excessive_scopes": primary["excessive_scopes"],
+            "missing_scopes": primary["missing_scopes"],
+            "required_capabilities": primary["required_capabilities"],
+            "granted_capabilities": primary["granted_capabilities"],
+            "missing_capabilities": primary["missing_capabilities"],
+            "excessive_capabilities": primary["excessive_capabilities"],
+            "exposure_score": primary["exposure_score"],
+            "least_privilege_plan": primary["least_privilege_plan"],
+            "recommendation": primary["recommendation"],
+            "providers": scenario.providers,
+            "provider_analyses": provider_analysis_items,
+            "qualified_capabilities": qualified_capabilities,
+        }
+        contract_summary = (
+            {
+                "state": actual["contract_state"],
+                "global_cross_provider_contract_created": False,
+                "contracts": [value.model_dump(mode="json") for value in contracts.values()],
+            }
+            if contracts
+            else None
+        )
+        return DemoRunResponse(
+            scenario_id=scenario.scenario_id,
+            scenario_name=scenario.scenario_name,
+            expected_outcome=scenario.expected_outcome,
+            actual_outcome=actual,
+            passed=passed,
+            timeline=timeline,
+            analysis_summary=summary,
+            composition_summary=composition,
+            contract_summary=contract_summary,
+            gateway_decisions=gateway_decisions,
+            evidence_chain_valid=verification.valid,
+            providers=scenario.providers,
+            provider_intents=scenario.provider_intents,
         )

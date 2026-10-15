@@ -40,6 +40,8 @@ def build_contract_payload(
     allowed_scopes: Iterable[str],
     allowed_capabilities: Iterable[str],
     ttl_seconds: int,
+    principal_id: str = "local-api-principal",
+    source_grant_ids: Iterable[str] = ("api-request-grant",),
     now: datetime | None = None,
 ) -> dict:
     """Build the non-circular contract fields used in creation evidence."""
@@ -48,6 +50,8 @@ def build_contract_payload(
     return {
         "contract_id": str(uuid4()),
         "provider": provider.strip().lower(),
+        "principal_id": principal_id,
+        "source_grant_ids": sorted(set(source_grant_ids)),
         "intended_actions": sorted(
             {normalize_intent(action) for action in intended_actions}
         ),
