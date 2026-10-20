@@ -1,5 +1,7 @@
 # ScopeSentry-R Threat Model
 
+> **Threat-model annex.** The canonical Phase 7 disclosure is `docs/ipr/submission/01-Invention-Disclosure.md`. Status terms in this annex mean mitigated, partially mitigated, detected in the simulator, or future work as explicitly stated; they do not imply universal prevention.
+
 ## Scope, protected assets, and assumptions
 
 Protected assets are intent-to-authority bindings, provider/principal/grant provenance, least-privilege contract integrity, runtime decision integrity, observed-flow classification, and evidence-chain continuity. Entry points are FastAPI request bodies, path/query parameters, static fixture loading, dashboard responses, local evidence storage, and release/evaluation CLI arguments.

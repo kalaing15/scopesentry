@@ -1,5 +1,7 @@
 # Reproducibility Guide
 
+> **Reproducibility annex and glossary.** Phase 4/V1/legacy means the frozen 24-case corpus. Phase 5/V2/provider-qualified means V1 plus 12 provider-qualified cases. An adapter ID names a local implementation (for example `mock-google`); a canonical authority provider ID names the security namespace (`google`).
+
 ## Environment
 
 The captured release-candidate environment uses Python 3.12. From the repository root in Windows PowerShell:
@@ -22,7 +24,7 @@ python -m uvicorn app.main:app --host 127.0.0.1 --port 8000
 Dashboard: `http://127.0.0.1:8000/demo`  
 OpenAPI: `http://127.0.0.1:8000/docs`
 
-The Phase 6 pre-change reference baseline is 222 tests. The deterministic registry contains 14 scenarios and three canonical authority identities: `google`, `mock-code-host`, and `mock-enterprise`.
+The final verified Phase 6 baseline, and Phase 7 starting baseline, was 255 passing tests. After the Phase 7 documentation, traceability, and cross-platform frozen-report tests were added, the complete Phase 7 suite is 279 passing tests. Both runs contain the same existing Starlette TestClient/httpx deprecation warning. The deterministic registry contains 14 scenarios and three canonical authority identities: `google`, `mock-code-host`, and `mock-enterprise`.
 
 ## Evaluation reproduction
 

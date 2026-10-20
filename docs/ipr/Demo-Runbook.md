@@ -1,5 +1,7 @@
 # Faculty and IPR Demonstration Runbook
 
+> **Demonstration annex.** The concise Phase 7 presentation order is `docs/ipr/submission/04-Demo-Guide.md`. Scenario “containment” means a block, quarantine, or execution skip within the credential-free simulator.
+
 Target duration: 10–15 minutes. Everything runs locally with synthetic data; internet access and OAuth credentials are neither needed nor used.
 
 ## 1. Environment verification (1 minute)

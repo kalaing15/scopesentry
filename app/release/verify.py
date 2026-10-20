@@ -22,6 +22,9 @@ from app.release.manifest import (
     READY,
     ReleaseProfile,
     atomic_write_text,
+    canonical_report_sha256,
+    evidence_event_types,
+    head_git_blob_sha256,
     load_traceability,
     render_manifest_markdown,
     render_traceability_markdown,
@@ -89,7 +92,7 @@ def _report_summary(root: Path, profile: ReleaseProfile, hashes: dict[str, str |
             summary = data["corpus_summary"]
             reports[version] = {
                 "path": filename,
-                "sha256": hashes[filename],
+                "canonical_sha256": hashes.get(filename),
                 "schema_version": data["schema_version"],
                 "corpus_size": summary.get("total_cases", summary.get("case_count")),
                 "corpus_hash": data["metadata"]["corpus_hash"],
@@ -114,6 +117,41 @@ def _report_summary(root: Path, profile: ReleaseProfile, hashes: dict[str, str |
         except (KeyError, TypeError, json.JSONDecodeError) as exc:
             errors.append(f"Malformed {version.upper()} report: {type(exc).__name__}")
     return reports, errors
+
+
+def _frozen_report_identities(
+    root: Path,
+    profile: ReleaseProfile,
+    raw_hashes: dict[str, str | None],
+) -> tuple[dict[str, str], dict[str, str], list[str]]:
+    """Validate canonical working content and exact HEAD blobs independently."""
+    expected = dict(profile.expected_report_hashes)
+    report_paths = set(profile.report_files)
+    errors: list[str] = []
+    if set(expected) != report_paths:
+        errors.append("Approved hash inventory does not exactly match the frozen report inventory")
+    canonical_hashes: dict[str, str] = {}
+    head_blob_hashes: dict[str, str] = {}
+    for relative in sorted(report_paths):
+        approved = expected.get(relative)
+        if raw_hashes.get(relative) is None:
+            errors.append(f"Missing frozen report: {relative}")
+            continue
+        try:
+            canonical_hashes[relative] = canonical_report_sha256(root / relative)
+        except (OSError, ValueError) as exc:
+            errors.append(f"Cannot canonicalize {relative}: {type(exc).__name__}")
+        try:
+            head_blob_hashes[relative] = head_git_blob_sha256(root, relative)
+        except (OSError, RuntimeError) as exc:
+            errors.append(f"Cannot read committed report {relative}: {type(exc).__name__}")
+        if approved is None:
+            continue
+        if canonical_hashes.get(relative) != approved:
+            errors.append(f"Canonical working-tree hash mismatch: {relative}")
+        if head_blob_hashes.get(relative) != approved:
+            errors.append(f"HEAD Git-blob hash mismatch: {relative}")
+    return canonical_hashes, head_blob_hashes, sorted(errors)
 
 
 def _safe_app_inspection(root: Path) -> tuple[list[str], dict[str, Any]]:
@@ -175,7 +213,18 @@ def verify_release(
 
     missing_reports = [name for name, digest in report_hashes_before.items() if digest is None]
     checks.append(_check("evaluation_report_presence", not missing_reports, "All six frozen evaluation reports are present." if not missing_reports else "Missing: " + ", ".join(missing_reports)))
-    report_data, report_errors = _report_summary(root, profile, report_hashes_before)
+    canonical_report_hashes, head_blob_hashes, frozen_hash_errors = _frozen_report_identities(
+        root, profile, report_hashes_before
+    )
+    frozen_report_hashes_ok = not frozen_hash_errors
+    checks.append(_check(
+        "frozen_evaluation_report_hashes",
+        frozen_report_hashes_ok,
+        "All six canonical working-tree reports and HEAD Git blobs match the approved SHA-256 values."
+        if frozen_report_hashes_ok
+        else "; ".join(frozen_hash_errors),
+    ))
+    report_data, report_errors = _report_summary(root, profile, canonical_report_hashes)
     checks.append(_check("evaluation_report_schema", not report_errors, "Existing report metadata and metrics were parsed without rerunning evaluation." if not report_errors else "; ".join(report_errors)))
 
     # Preserve the production/evaluation static-import boundary. These two
@@ -220,7 +269,12 @@ def verify_release(
     if trace_path.is_file():
         try:
             trace_entries = load_traceability(trace_path)
-            trace_errors.extend(validate_traceability(root, trace_path))
+            trace_errors.extend(validate_traceability(
+                root,
+                trace_path,
+                scenario_ids=scenario_inventory,
+                allowed_evidence_events=evidence_event_types(root),
+            ))
             matrix = root / "docs/ipr/Novelty-Traceability-Matrix.md"
             if not matrix.is_file() or matrix.read_text(encoding="utf-8") != render_traceability_markdown(trace_entries):
                 trace_errors.append("Markdown matrix does not match structured traceability")
@@ -228,7 +282,7 @@ def verify_release(
             trace_errors.append(str(exc))
     else:
         trace_errors.append("Structured traceability is missing")
-    checks.append(_check("traceability_integrity", not trace_errors, "Structured traceability paths, Python symbols, tests, scenarios, and Markdown projection resolve." if not trace_errors else "; ".join(trace_errors)))
+    checks.append(_check("traceability_integrity", not trace_errors, "Structured traceability paths, Python symbols, exact test functions, live scenarios, frozen evaluation references, numerical metrics, evidence events, and Markdown projection resolve." if not trace_errors else "; ".join(trace_errors)))
 
     secret_findings = scan_secrets(root)
     high_secrets = [item for item in secret_findings if item["severity"] == "high"]
@@ -248,8 +302,13 @@ def verify_release(
     checks.append(_check("dependency_inventory", bool(dependencies), "Declared requirements were inventoried from local metadata only.", required=False))
 
     reports = {
-        name: {"sha256": digest, "preserved": None}
-        for name, digest in report_hashes_before.items()
+        name: {
+            "canonical_sha256": canonical_report_hashes.get(name),
+            "working_tree_raw_sha256": raw_digest,
+            "head_blob_sha256": head_blob_hashes.get(name),
+            "preserved": None,
+        }
+        for name, raw_digest in report_hashes_before.items()
     }
     timestamp = (now or (lambda: datetime.now(timezone.utc)))().astimezone(timezone.utc).isoformat()
     required_failed = any(item["required"] and not item["passed"] for item in checks)

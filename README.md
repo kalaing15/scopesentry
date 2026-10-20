@@ -212,3 +212,32 @@ real-provider compatibility, or independent validation. Ground truth remains
 author-defined until the blank review record is completed. The verifier reads
 but does not modify normal evidence, contracts, scenarios, evaluation state,
 source, or frozen reports.
+
+## Phase 7 — Final IPR Cell submission package
+
+The canonical tracked submission begins at
+`docs/ipr/submission/00-Submission-Index.md`. Its invention disclosure,
+qualified claim concepts, reviewed diagrams, demo guide, human-review
+checklist, and blank prior-art worksheet consolidate the Phase 6 annexes
+without changing the security implementation or frozen reports.
+
+`docs/ipr/traceability.json` is the schema-version 1.1 machine-readable source
+for candidate-element status, claim suitability, exact source symbols and
+tests, scenario support, frozen-report references, checked metric JSON paths,
+evidence events, qualifications, and limitations. The Markdown traceability
+matrix is its generated human-readable projection.
+
+The verified Phase 6 baseline was 255 passing tests. After the Phase 7
+documentation, traceability, and cross-platform frozen-report tests were added,
+the complete Phase 7 suite is 279 passing tests with one existing deprecation
+warning. The two counts describe different verification milestones.
+The release verifier also validates the Phase 7 package and traceability references:
+
+```powershell
+python -m app.release.verify --output-dir reports\release
+```
+
+Candidate claim material is only technical concepts for professional
+patent-counsel/IPR review. No repository document establishes novelty,
+patentability, production readiness, formal verification, real-provider
+compatibility, universal prevention, or independent validation.
