@@ -185,3 +185,30 @@ Evaluation evidence uses a temporary isolated JSONL chain; performance loops
 do not write evidence. The normal evidence log and existing Phase 4 reports
 are not modified. The corpus remains author-defined until a human completes
 `docs/evaluation-ground-truth-review.md`.
+
+## Phase 6 — IPR technical disclosure and release verification
+
+Documentation index:
+
+- `docs/ipr/ScopeSentry-R-Technical-Disclosure.md`
+- `docs/ipr/Architecture-and-Data-Flow.md`
+- `docs/ipr/Threat-Model.md`
+- `docs/ipr/Novelty-Traceability-Matrix.md`
+- `docs/ipr/Experimental-Methodology.md`
+- `docs/ipr/Demo-Runbook.md`
+- `docs/ipr/Reproducibility-Guide.md`
+- `docs/ipr/traceability.json` (machine-readable source)
+
+Run the read-only verifier from the repository root:
+
+```powershell
+python -m app.release.verify --output-dir reports\release
+```
+
+It writes only JSON and Markdown manifests in the selected output directory.
+`ready_for_local_ipr_demo` means required local technical checks passed; it
+does not mean production readiness, formal verification, patentability,
+real-provider compatibility, or independent validation. Ground truth remains
+author-defined until the blank review record is completed. The verifier reads
+but does not modify normal evidence, contracts, scenarios, evaluation state,
+source, or frozen reports.
