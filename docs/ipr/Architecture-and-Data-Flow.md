@@ -1,6 +1,8 @@
 # Architecture and Data Flow
 
-These diagrams describe the implemented local PoC. Synthetic adapters do not contact commercial providers.
+> **Architecture annex.** The reviewed Phase 7 submission figures and captions are in `docs/ipr/submission/03-Submission-Diagrams.md`.
+
+These diagrams describe the implemented local PoC. Synthetic adapters do not contact commercial providers. Runtime observations are supplied to the simulator, contracts are process-local, and an unsafe path is detected and skipped by the demonstration orchestrator rather than intercepted at a real provider.
 
 ## Overall architecture
 

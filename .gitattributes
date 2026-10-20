@@ -1,0 +1,3 @@
+reports/evaluation/*.json text eol=lf
+reports/evaluation/*.csv text eol=lf
+reports/evaluation/*.md text eol=lf

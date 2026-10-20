@@ -1,8 +1,10 @@
 # ScopeSentry-R Technical Disclosure
 
+> **Technical annex.** The canonical Phase 7 submission wording is `docs/ipr/submission/01-Invention-Disclosure.md`. This annex supplies implementation detail and must be read with the submission glossary and qualifications.
+
 ## Title and technical field
 
-**ScopeSentry-R: Intent-Locked, Provider-Qualified OAuth Capability Security.** The implementation is a credential-free local proof of concept for authorization analysis, least-privilege planning, runtime capability enforcement, cross-grant composition analysis, and tamper-evident decision evidence.
+**ScopeSentry-R: Intent-Locked, Provider-Qualified OAuth Capability Security.** The implementation is a credential-free local proof of concept for authorization analysis, bounded least-privilege planning, runtime capability-decision enforcement within the simulator, cross-grant composition analysis, and tamper-evident decision evidence.
 
 ## Background, technical problem, and static-checking limitations
 

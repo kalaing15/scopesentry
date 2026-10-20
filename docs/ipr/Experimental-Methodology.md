@@ -1,5 +1,7 @@
 # Experimental Methodology
 
+> **Experimental annex.** Phase 4, V1, and legacy corpus refer to the frozen 24-case evaluation. Phase 5, V2, and provider-qualified corpus refer to V1 plus 12 provider-qualified cases (36 total). These terms describe report generations, not production releases.
+
 ## Status and purpose
 
 **Ground truth is author-defined; independent review is pending.** The deterministic corpus is intentionally threat-heavy and is not statistically representative. Results demonstrate reproducible behavior of this local PoC; they are not formal security guarantees or evidence of patentability.
