@@ -6,3 +6,5 @@ __pycache__/
 *.db
 Documents/
 runtime/
+reports/release/
+.test-tmp/
