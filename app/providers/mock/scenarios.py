@@ -150,6 +150,8 @@ _SCENARIO_FIXTURES = {
                 "link_id": "drive-read-to-email-send",
                 "source_grant_id": "composed-reader-grant",
                 "target_grant_id": "composed-mailer-grant",
+                "source_capability": "read_file_contents",
+                "target_capability": "send_email_messages",
                 "data_type": "drive_file_contents",
                 "description": "Read file data can flow into outbound email.",
             }

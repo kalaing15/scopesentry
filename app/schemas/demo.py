@@ -12,6 +12,7 @@ from app.schemas.provider import (
     MockGrant,
     ProviderMetadata,
     ScenarioRiskCategory,
+    ProviderIntentAssignment,
 )
 
 
@@ -43,6 +44,7 @@ class DemoScenarioSummary(BaseModel):
     risk_category: ScenarioRiskCategory
     description: str
     expected_outcome: str
+    providers: List[str] = Field(default_factory=list)
 
 
 class DemoProviderListResponse(BaseModel):
@@ -79,6 +81,9 @@ class DemoAnalysisSummary(BaseModel):
     exposure_score: float
     least_privilege_plan: LeastPrivilegePlan
     recommendation: str
+    providers: List[str] = Field(default_factory=list)
+    provider_analyses: List[Dict[str, Any]] = Field(default_factory=list)
+    qualified_capabilities: List[Dict[str, str]] = Field(default_factory=list)
 
 
 class DemoRunResponse(BaseModel):
@@ -93,3 +98,5 @@ class DemoRunResponse(BaseModel):
     contract_summary: Optional[Dict[str, Any]] = None
     gateway_decisions: List[Dict[str, Any]]
     evidence_chain_valid: bool
+    providers: List[str] = Field(default_factory=list)
+    provider_intents: List[ProviderIntentAssignment] = Field(default_factory=list)

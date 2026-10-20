@@ -38,6 +38,8 @@ class MockGoogleProviderAdapter(ProviderAdapter):
             provider_name=self.provider_name,
             display_name="Mock Google-Compatible Provider",
             catalog_provider=self.catalog_provider,
+            authority_provider_id=self.catalog_provider,
+            aliases=["google"],
             simulation_only=True,
             description=(
                 "Credential-free deterministic simulator using internal "
@@ -103,6 +105,8 @@ class MockGoogleProviderAdapter(ProviderAdapter):
                 if allowed
                 else "The simulated provider would not allow this capability."
             ),
+            authority_provider=grant.authority_provider,
+            principal_id=grant.principal_id,
         )
 
     def reset(self) -> None:

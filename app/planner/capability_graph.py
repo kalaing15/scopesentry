@@ -41,6 +41,7 @@ def build_capability_graph(
         converted to sorted lists.
     """
     catalog = get_catalog(provider)
+    canonical_provider = provider.strip().lower()
 
     granted_set: Set[str] = set(granted_scopes)
     required_set: Set[str] = set(required_scopes)
@@ -67,6 +68,9 @@ def build_capability_graph(
             scope,
             node_type="scope",
             status=scope_status,
+            provider=canonical_provider,
+            authority_provider=canonical_provider,
+            scope=scope,
         )
 
         # Capabilities enabled by this scope (skip unknown scopes)
@@ -74,7 +78,14 @@ def build_capability_graph(
         for cap in capabilities:
             # Add capability node (idempotent – no duplicates)
             if not graph.has_node(cap):
-                graph.add_node(cap, node_type="capability", status="unknown")
+                graph.add_node(
+                    cap,
+                    node_type="capability",
+                    status="unknown",
+                    provider=canonical_provider,
+                    authority_provider=canonical_provider,
+                    capability=cap,
+                )
 
             # Add edge
             graph.add_edge(scope, cap, relation="ENABLES")

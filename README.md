@@ -25,7 +25,7 @@ scope exposure through least-privilege synthesis, runtime enforcement, and
 tamper-evident evidence verification.
 
 Use **Run Scenario** on an individual card to execute one deterministic
-scenario. Use **Run All Scenarios** to execute all five in the backend-provided
+scenario. Use **Run All Scenarios** to execute all scenarios in the backend-provided
 order. Run-all is sequential so its progress and evidence records remain easy
 to follow; a failed request is displayed as an execution error and is never
 treated as an allowed result.
@@ -38,9 +38,12 @@ unsafe rather than allowed. No OAuth credentials are required or accepted.
 
 ## Credential-free simulator
 
-The current `mock-google` provider is a deterministic, credential-free
-simulator. Its scope names are internal normalized aliases backed by the mock
-catalogue. It is not Google OAuth, does not contact Google, and requires no
+The `mock-google`, `mock-enterprise`, and `mock-code-host` adapters are
+deterministic, credential-free simulators. `mock-google` is an explicit adapter
+alias for the canonical `google` authority namespace; the other two names are
+canonical synthetic namespaces. Their scopes are internal normalized aliases
+backed by immutable local catalogues. They are not real provider integrations,
+contact no external service, and require no
 account, client ID, client secret, authorization code, or OAuth token.
 
 ## Demo scenarios
@@ -147,3 +150,38 @@ evaluation (or confirmed to remain absent), while repeated timing iterations
 perform no evidence writes. Generated measurements use only the local mock
 catalogue, require no network or OAuth credentials, are not production
 performance guarantees, and are not a formal security or patentability proof.
+
+## Provider-agnostic security validation
+
+Phase 5 separates the adapter implementation ID from the canonical authority
+provider ID. Provider, principal, and grant identity travel with scope and
+capability provenance. Contracts stay inside one provider/grant boundary, and
+runtime identity mismatches are blocked before scope or capability checks.
+The same scope or capability text in two provider catalogues never shares
+authority.
+
+The dashboard displays provider badges, qualified grants and capabilities,
+and cross-provider flow warnings using backend-supplied data. Observed links
+are not authorizations: an allowed cross-provider flow must exactly match a
+separate authorization across source and target provider, principal, grant,
+capability, and data type. No wildcard flow authorization is supported.
+
+The V2 evaluation reuses the Phase 4 engine and its frozen 24-case corpus, then
+adds 12 provider-qualified cases for a total of 36. It writes separate output
+files and records hashes of the existing Phase 4 reports before and after the
+run:
+
+```powershell
+python -m app.evaluation.runner_v2 --iterations 50 --warmups 5 --output-dir reports\evaluation
+```
+
+Generated V2 reports are:
+
+- `reports/evaluation/scope_sentry_evaluation_v2.json`
+- `reports/evaluation/scope_sentry_evaluation_v2.csv`
+- `reports/evaluation/scope_sentry_evaluation_v2.md`
+
+Evaluation evidence uses a temporary isolated JSONL chain; performance loops
+do not write evidence. The normal evidence log and existing Phase 4 reports
+are not modified. The corpus remains author-defined until a human completes
+`docs/evaluation-ground-truth-review.md`.

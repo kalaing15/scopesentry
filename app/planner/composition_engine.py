@@ -77,7 +77,9 @@ def analyze_composition(
         )
 
     all_intents = _stable_unique(all_intents)
-    required_scopes, unknown_intents = map_intents_to_scopes(all_intents)
+    required_scopes, unknown_intents = map_intents_to_scopes(
+        all_intents, provider_key
+    )
     required_capabilities = sorted(
         {
             capability
@@ -123,6 +125,7 @@ def analyze_composition(
             "id": grant_node_id,
             "node_type": "grant",
             "grant_id": grant_id,
+            "provider": provider_key,
         }
 
         for scope in scopes:
@@ -133,6 +136,7 @@ def analyze_composition(
                 "node_type": "scope",
                 "scope": scope,
                 "grant_id": grant_id,
+                "provider": provider_key,
                 "status": "recognized" if scope in catalog else "unknown",
             }
             edges.add((grant_node_id, scope_node_id, "HAS_SCOPE"))
@@ -144,6 +148,7 @@ def analyze_composition(
                     "id": capability_node_id,
                     "node_type": "capability",
                     "capability": capability,
+                    "provider": provider_key,
                     "status": (
                         "required"
                         if capability in required_capability_set

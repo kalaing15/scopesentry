@@ -134,6 +134,9 @@
       requireString(scenario.description, "scenario description");
       requireString(scenario.expected_outcome, "expected outcome");
       requireString(scenario.risk_category, "risk category");
+      if (scenario.providers !== undefined) {
+        requireStringArray(scenario.providers, "providers");
+      }
     });
     return payload.scenarios;
   }
@@ -150,6 +153,8 @@
         throw new DashboardError("The scenario contains malformed grant metadata.");
       }
       requireString(grant.grant_id, "grant ID");
+      requireString(grant.authority_provider, "grant authority provider");
+      requireString(grant.principal_id, "grant principal");
     });
     return payload;
   }
@@ -295,6 +300,15 @@
       card.append(topline, makeElement("h3", null, summary.scenario_name));
       card.append(makeElement("p", null, summary.description));
 
+      const providerBadges = makeElement("div", "provider-badges");
+      const summaryProviders = Array.isArray(summary.providers) && summary.providers.length
+        ? summary.providers
+        : [summary.provider];
+      deterministicStrings(summaryProviders).forEach((provider) => {
+        providerBadges.append(makeElement("span", "provider-badge", provider));
+      });
+      card.append(providerBadges);
+
       const metadata = makeElement("dl", "metadata-list");
       const scenario = detail ? detail.scenario : null;
       addDefinition(
@@ -305,7 +319,9 @@
       addDefinition(
         metadata,
         "Grants",
-        scenario ? deterministicStrings(scenario.grant_ids).join(", ") || "None" : "Unavailable",
+        detail ? deterministicStrings(detail.grants.map((grant) => (
+          `${grant.authority_provider}:${grant.principal_id}:${grant.grant_id}`
+        ))).join(", ") || "None" : "Unavailable",
       );
       addDefinition(metadata, "Expected", summary.expected_outcome);
       card.append(metadata);
@@ -490,6 +506,14 @@
       createChipGroup("Missing capabilities", analysis.missing_capabilities, "missing"),
       createChipGroup("Attempted capability", attempted),
     );
+    const qualified = Array.isArray(analysis.qualified_capabilities)
+      ? analysis.qualified_capabilities.filter((item) => isObject(item)).map((item) => (
+        `${item.provider || "Unrecognized"}:${item.principal_id || "Unrecognized"}:${item.grant_id || "Unrecognized"}:${item.capability || "Unrecognized"}`
+      ))
+      : [];
+    if (qualified.length > 0) {
+      columns.append(createChipGroup("Provider-qualified capabilities", qualified));
+    }
     panel.append(columns);
     if (analysis.missing_capabilities.length > 0 && result.contract_summary === null) {
       panel.append(makeElement(
@@ -551,9 +575,11 @@
         list.append(item);
         return;
       }
-      const source = typeof path.source_capability === "string" ? path.source_capability : "Unrecognized";
+      const sourceCapability = typeof path.source_capability === "string" ? path.source_capability : "Unrecognized";
       const dataType = typeof path.data_type === "string" ? path.data_type : "Unrecognized";
-      const target = typeof path.target_capability === "string" ? path.target_capability : "Unrecognized";
+      const targetCapability = typeof path.target_capability === "string" ? path.target_capability : "Unrecognized";
+      const source = `${typeof path.source_provider === "string" ? path.source_provider : "Unrecognized"}: ${sourceCapability}`;
+      const target = `${typeof path.target_provider === "string" ? path.target_provider : "Unrecognized"}: ${targetCapability}`;
       item.append(
         makeElement("div", "path-node", source),
         makeElement("span", "path-arrow", "→"),
@@ -568,6 +594,9 @@
       );
       description.setAttribute("aria-label", `Unauthorized path ${index + 1}`);
       item.append(description);
+      if (path.cross_provider === true) {
+        item.append(makeElement("p", "cross-provider-warning", "Cross-provider observed flow"));
+      }
       if (typeof path.remediation === "string") {
         item.append(makeElement("p", "path-description", `Remediation: ${path.remediation}`));
       }
@@ -698,6 +727,8 @@
     const overview = createPanel("Result overview");
     const metadata = makeElement("dl", "metadata-list");
     addDefinition(metadata, "Scenario ID", result.scenario_id);
+    const resultProviders = Array.isArray(result.providers) ? result.providers : [];
+    addDefinition(metadata, "Authority providers", resultProviders.length ? deterministicStrings(resultProviders).join(", ") : "Unrecognized");
     addDefinition(metadata, "Result", result.passed ? "Expected outcome confirmed" : "Expected outcome not confirmed");
     addDefinition(metadata, "Recommendation", result.analysis_summary.recommendation);
     const pathCount = Number.isInteger(result.actual_outcome.unauthorized_path_count)

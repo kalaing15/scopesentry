@@ -99,10 +99,12 @@ def create_contract(
         allowed_scopes=selected_scopes,
         allowed_capabilities=allowed_capabilities,
         ttl_seconds=request.ttl_seconds,
+        principal_id=request.principal_id,
+        source_grant_ids=request.source_grant_ids,
     )
     evidence_reference = evidence_service.create_record(
         analysis_type="contract_created",
-        request=request,
+        request={**request.model_dump(mode="json"), "provider": provider},
         result={"contract": contract_payload, "analysis": analysis},
         decision_summary=(
             f"Created active least-privilege contract "
@@ -154,6 +156,9 @@ def evaluate_runtime_action(
         contract,
         attempted_capability=request.attempted_capability,
         observed_scopes=request.observed_scopes,
+        observed_provider=request.provider,
+        observed_principal_id=request.principal_id,
+        observed_grant_id=request.grant_id,
     )
     transition = outcome.pop("state_transition")
     if transition is not None:

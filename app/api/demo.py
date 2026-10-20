@@ -5,7 +5,11 @@ from fastapi import APIRouter, Depends, HTTPException, Request
 from app.evidence.service import EvidenceService, get_evidence_service
 from app.gateway.repository import ContractRepository, get_contract_repository
 from app.orchestrator.demo_runner import DemoRunner, ScenarioNotFoundError
-from app.providers.mock.scenarios import get_scenario, list_scenarios
+from app.providers.scenario_registry import (
+    get_grant,
+    get_scenario,
+    list_scenarios,
+)
 from app.providers.registry import ProviderRegistry, get_provider_registry
 from app.schemas.demo import (
     DemoErrorResponse,
@@ -54,6 +58,7 @@ def list_demo_scenarios() -> DemoScenarioListResponse:
             risk_category=scenario.risk_category,
             description=scenario.description,
             expected_outcome=scenario.expected_outcome,
+            providers=scenario.providers,
         )
         for scenario in list_scenarios()
     ]
@@ -72,10 +77,9 @@ def get_demo_scenario(
     scenario = get_scenario(scenario_id)
     if scenario is None:
         raise _unknown_scenario(scenario_id)
-    adapter = registry.get(scenario.provider)
     return DemoScenarioDetailResponse(
         scenario=scenario,
-        grants=[adapter.get_grant(grant_id) for grant_id in scenario.grant_ids],
+        grants=[get_grant(grant_id) for grant_id in scenario.grant_ids],
     )
 
 
